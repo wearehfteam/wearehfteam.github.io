@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Flash card"
+  contact:
+    email: "hfteam@gmail.com"
+host: "localhost:3000"
+basePath: "/v2"
+tags:
+  - name: "deck"
+    description: "list decks"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+  - name: "question"
+    description: "every thing about question"
+  - name: "user"
+    description: "Operations about user"
+    externalDocs:
+      description: "Find out more about our store"
+      url: "http://swagger.io"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /user:
+    get:
+      tags:
+        - "user"
+      summary: "get list user"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+    post:
+      tags:
+        - "user"
+      summary: "Add a new user"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "405":
+          description: "Invalid input"
+  /user/{username}:
+    get:
+      tags:
+        - "user"
+      summary: "Get user by user name"
+      description: ""
+      operationId: "getUserByName"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "username"
+          in: "path"
+          description: "The name that needs to be fetched. Use user1 for testing. "
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid username supplied"
+        "404":
+          description: "User not found"
+  /decks:
+    get:
+      tags:
+        - "deck"
+      summary: "get list deck"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+  deck/{id}:
+    get:
+      tags:
+        - "deck"
+      summary: "Get deck by id"
+      description: ""
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "The id that needs to be fetched."
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid username supplied"
+        "404":
+          description: "User not found"
+  /questions:
+    get:
+      tags:
+        - "question"
+      summary: "get list question"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+  /questions/{deck}?deck=:
+    get:
+      tags:
+        - "deck"
+      summary: "get list question by deck"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
