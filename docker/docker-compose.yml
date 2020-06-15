@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: '123456'
+    volumes:
+      - ../db:/var/lib/mysql
+    expose:
+      - '3306'
+  app:
+    container_name: flashcard
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    command: tail -f /dev/null
+    volumes:
+      - ../code/:/home/flashcard
+    ports:
+      - '3000:3000'
