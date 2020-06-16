@@ -2,7 +2,6 @@ FROM ubuntu:20.04
 
 LABEL maintainer="HF Team"
 
-
 WORKDIR /home/flashcard/
 EXPOSE 3000
 
@@ -13,7 +12,7 @@ RUN apt-get update \
     && apt-get install -y nodejs \
     && npm install yarn -g 
 
-ADD /code/ /home/flashcard
+ADD ./code/ /home/flashcard
 
 COPY ./docker/entrypoint.sh /usr/bin
 RUN chmod +x /usr/bin/entrypoint.sh
