@@ -1,5 +1,4 @@
 # Flash Card 
-***
 ### Change directory to something following:
 pwd : ......../flashcard
 
