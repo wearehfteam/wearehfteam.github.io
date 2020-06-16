@@ -4,7 +4,7 @@ pwd : ......../flashcard
 
 ### Run 2 commands in terminal/powershell v.v
 ```
-cd docker <br>
+cd docker
 docker-compose up
 ```
 
