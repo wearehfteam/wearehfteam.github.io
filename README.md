@@ -15,7 +15,7 @@ docker-compose up
 
 ### Open Chrome Debugging and paste the following code, if you get some responses, you succeeds:
 ```javascript
-fetch('http://localhost:3000/account')
+fetch("http://localhost:3000/questions", { mode: 'no-cors' })
 .then(response => response.json())
 .then(data => console.log(data))
 .catch(error => console.log(error));
