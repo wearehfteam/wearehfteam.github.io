@@ -18,7 +18,7 @@ services:
     volumes:
       - ./my.cnf:/etc/mysql/my.cnf
       - ./data.sql:/docker-entrypoint-initdb.d/data.sql
-      - ../db:/var/lib/mysql
+      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
     expose:
       - '3306'
 
