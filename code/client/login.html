@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="section">
+      <div class="section_form border">
+        <form>
+          <h2 class="section_form_title">LOGIN WITH YOUR ACCOUNT</h2>
+          <h4 class="section_form_subtitle">
+            Login with your email and password
+          </h4>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+            placeholder="Enter your email..."
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+          <button type="submit" id="btn_signin">SIGN IN</button>
+        </form>
+      </div>
+      <div class="section_form mg-right">
+        <form>
+          <h2 class="section_form_title">SIGN UP WITH YOUR ACCOUNT</h2>
+          <h4 class="section_form_subtitle">
+            Sign up with your username, email and password
+          </h4>
+
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username..."
+          />
+
+          <input
+            type="text"
+            name="email"
+            id="email_signup"
+            placeholder="Enter your email..."
+          />
+
+          <input
+            type="password"
+            name="password"
+            id="password_signup"
+            placeholder="Enter your password"
+          />
+
+          <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            placeholder="Enter your password"
+          />
+          <button type="submit" id="btn_signup">SIGN UP</button>
+        </form>
+      </div>
+    </div>
+    <ul id="error"></ul>
+    <script type="module" src="./js/login.js"></script>
+  </body>
+</html>
