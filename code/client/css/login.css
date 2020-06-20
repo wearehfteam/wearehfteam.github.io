@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Raleway";
+}
+html {
+  font-size: 62.5%;
+}
+.top {
+  margin-top: 10rem;
+}
+.logo img {
+  width: 100%;
+  height: auto;
+}
+.content {
+  margin-top: 20rem;
+}
+.content h1 {
+  color: #ef2f62;
+  font-size: 12rem;
+  font-weight: 800;
+  -webkit-text-stroke: 1px white;
+}
+.content h2 {
+  color: white;
+  font-size: 3.5rem;
+}
+.content .btn-play {
+  background-color: white;
+  z-index: 2;
+  width: 15rem;
+  border-radius: 3rem;
+  border: none;
+  height: 4.5rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2rem;
+  color: black;
+}
+.content .btn-play a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+.content p {
+  position: absolute;
+  top: 15rem;
+  left: 5rem;
+  z-index: 1;
+  font-size: 40rem;
+  font-weight: 700;
+  color: white;
+  opacity: 0.3;
+}
+/* Login's  Style */
+.section {
+  display: flex;
+  max-width: 140rem;
+  margin: 15rem auto;
+  flex-wrap: wrap;
+}
+.section_form {
+  width: 65rem;
+  padding: 2.5rem 2.5rem;
+  font-size: 2.5rem;
+}
+
+#error {
+  width: 30rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  color: red;
+  margin: 0 auto;
+}
+ul li {
+  display: block;
+}
+.section_form_title {
+  font-weight: 400;
+}
+.section_form_subtitle {
+  font-weight: 300;
+}
+.section_form input {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 50rem;
+  font-weight: 300;
+  padding: 1.5rem 0rem;
+  font-size: 1.75rem;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.border {
+  border-right: 1px solid gray;
+}
+.mg-right {
+  margin-left: 4.5rem;
+}
+.section_form input:focus {
+  outline: none;
+}
+.section_form button {
+  width: 100%;
+  max-width: 50rem;
+  margin-top: 1rem;
+  padding: 1.5rem 0rem;
+  border: 1px solid transparent;
+  font-size: 1.5rem;
+}
+.section_form button:hover {
+  border: 1px solid gray;
+  background-color: transparent;
+}
