@@ -25,7 +25,7 @@ module.exports = function (app) {
     app.route('/questions')
         .get(questionCtrl.get)
 
-    app.route('/questions/deck')
+    app.route('/questions/:deck')
         .get(questionCtrl.getByDeck)
 };
 

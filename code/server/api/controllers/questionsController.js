@@ -13,18 +13,18 @@ module.exports = {
         })
     },
     detail: (req, res) => {
-        let sql = 'SELECT * FROM account WHERE id = ?'
+        let sql = 'SELECT * FROM questions WHERE id = ?'
         db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
-            res.json(response[0])
+            res.json(response)
         })
 
     },
     getByDeck: (req, res) => {
-        let sql = 'SELECT * FROM account WHERE deck = ?'
+        let sql = 'SELECT * FROM questions WHERE deck = ?'
         db.query(sql, [req.params.deck], (err, response) => {
             if (err) throw err
-            res.json(response[0])
+            res.json(response)
         })
 
     }

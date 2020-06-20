@@ -16,7 +16,7 @@ module.exports = {
         let sql = 'SELECT * FROM account WHERE username = ?'
         db.query(sql, [req.params.username], (err, response) => {
             if (err) throw err
-            res.json(response[0])
+            res.json(response)
         })
 
     },

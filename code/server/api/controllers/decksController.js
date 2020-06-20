@@ -13,10 +13,10 @@ module.exports = {
         })
     },
     detail: (req, res) => {
-        let sql = 'SELECT * FROM account WHERE id = ?'
+        let sql = 'SELECT * FROM decks WHERE id = ?'
         db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
-            res.json(response[0])
+            res.json(response)
         })
 
     }
