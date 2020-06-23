@@ -31,6 +31,7 @@ INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('loc', '1');
 INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('tien', '123');
 INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('son', '1');
 INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('khang', '1');
+INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('animal', '1');
 
 INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('1', 'trái cây', ' https://image.thanhnien.vn/1080/uploaded/minhnguyet/2019_10_10/trai-cay_boqu.jpg');
 INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('2', 'động vật', 'https://i.ytimg.com/vi/IStTGXckv0A/maxresdefault.jpg');
