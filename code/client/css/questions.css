@@ -1,23 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 body{
-    background: linear-gradient(-45deg,  #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-position: center left;
+    /* background: linear-gradient(-45deg,  #EE7752, #E73C7E, #23A6D5, #23D5AB); */
+    background: url(../img/background.jpg) no-repeat;
+    background: url(../img/backgroundQT.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: 'Roboto', sans-serif;
+    justify-content: top center ;
 }
 /* Contains result box, card box and menu box  */
 .home-box{
     max-width: 1200px;
-    height: 700px;
-    background-color:linear-gradient(to right,#ec6f66, #f3a183);
-    margin: 300px auto ;
-    border-radius: 10px;
+    height: 650px;
+    /* background-color:red; */
+    margin: 145px auto;
+    
     display: flex;
     justify-content: center ;
 }
 
 .blur{
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0, 0.4); 
+    background-color: rgb(255, 255, 255); 
+    background-color: rgba(255, 239, 239, 0.4); 
     
 }
 
@@ -30,8 +35,8 @@ body{
     display: flex;
     flex-direction: column;
     padding: 50px 40px;
-    border-radius: 20px;
-    border: 2px solid black;
+    /* border-radius: 20px; */
+    border-right: 1px solid black;
     animation: fadeInRight 1s ease;
 }
 
@@ -45,24 +50,25 @@ body{
 }
 /* card box contains question box, infor box, option box, decripton box and next-question button */
 .card-box{
-    width:400px;
+    width:600px;
     font-weight: bold;
-    padding: 100px 10px;
-    border-radius: 20px;
-    border: 2px solid black;
+    padding: 50px 10px;
+    /* border-radius: 20px; */
+    /* border: 2px solid black; */
 }
 
 .card-box .question-box{
+    background-image: url(../img/backgroundQT.jpg); 
+    background-attachment: fixed;
     background-color: #ffffff;
-    border: 1px solid black;
+    border: 5px solid black;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
     
 }
 .card-box .infor-box{
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0, 0.4); 
+    background-image: url(../img/backgroundQT.jpg);
     border: 1px solid black;
     border-radius: 10px;
     font-size: 30px;
@@ -74,7 +80,7 @@ body{
 .card-box .infor-box .infor-text{
     padding: 40px ;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     color: black;
     position: relative;
     text-transform: uppercase;
@@ -84,7 +90,7 @@ body{
 .card-box .question-box .question-text{
     padding: 80px;
     font-family: 'Roboto', sans-serif;
-    font-size: 35px;
+    font-size: 80px;
     color: black;
     position: relatcive;
     text-transform: uppercase;
@@ -94,6 +100,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 20px;
     
 }
 .card-box .option-box .option{
@@ -142,7 +149,7 @@ body{
     width: 20px;
     right: 5px;
     top: 5px;
-    background-image: url("img/correct.png");
+    background-image: url("../img/correct.png");
     background-size: 15px;
     background-position: center;
     background-repeat: no-repeat;
@@ -161,7 +168,7 @@ body{
     width: 20px;
     right: 5px;
     top: 5px;
-    background-image: url("img/wrong.png");
+    background-image: url("../img/wrong.png");
     background-size: 15px;
     background-position: center;
     background-repeat: no-repeat;
@@ -217,13 +224,16 @@ body{
     display: none;
 }
 .card-box .correct-answer-description.show{
+    width: 400px;
     display: block;
     animation: fadeInRight 1s ease;
+    
 
 }
 .card-box .wrong-answer-description.show{
     display: block;
     animation: fadeInRight 1s ease;
+    width: 400px;
 
 }
 
@@ -234,11 +244,18 @@ body{
     color: black;
     position: relative;
     text-transform: uppercase;
-    text-align: center;
+    
 }
-.card-box .next-question{
-    padding-top: 30px;
+.card-box .description{
     text-align: center;
+    padding: 0px 95px;
+
+}
+
+
+.card-box .next-question{
+    text-align: center;
+    
 }
 
 /* menu box */
@@ -247,14 +264,17 @@ body{
     display: flex;
     flex-direction: column;
     justify-content:  space-between;
-    /* background-color:#4a8aff; */
-    padding: 50px 40px;
-    border-radius: 20px;
-    border: 2px solid black;
+    padding: 50px 50px;
+    border-left: 1px solid black;
 }
 
 .next-question .next-question-btn{
     margin-top: 50px;
+    animation: fadeInRight 1s ease;
+    
+}
+.next-question .next-question-btn.show{
+    display: none;
 }
 
 
@@ -290,8 +310,8 @@ body{
  
 /* Kích thước các mặt */
 .flip-container, .front, .back {
-	width: 400px;
-	height: 200px;
+	width: 590px;
+	height: 280px;
 }
  
 /* flip speed  */

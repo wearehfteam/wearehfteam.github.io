@@ -40,7 +40,7 @@ myApp = [
     option: ["xương rồng", "cây táo", "cây ổi", "cây mận"],
     answer: 0,
     description:
-      "a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves",
+      "a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves,a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves",
   },
   {
     id: 4,
@@ -78,9 +78,11 @@ function check(ele) {
   if (id == myApp[questionIndex].answer) {
     ele.classList.add("correct");
     showCorrectAnswerDescription();
+    showNextQuestionBtn();
   } else {
     ele.classList.add("wrong");
     showWrongAnswerDescription();
+    showNextQuestionBtn();
     for (let i = 0; i < optionBox.children.length; i++) {
       if (optionBox.children[i].id == myApp[questionIndex].answer) {
         optionBox.children[i].classList.add("show-correct");
@@ -115,6 +117,13 @@ function disableOptions() {
   }
 }
 
+function showNextQuestionBtn(){
+  nextQuestionBtn.classList.remove("show")
+}
+function hideNextQuestionBtn(){
+  nextQuestionBtn.classList.add("show")
+}
+
 //button nextquestion
 
 nextQuestionBtn.addEventListener("click", nextQuestion);
@@ -125,6 +134,7 @@ function nextQuestion() {
   hideMoreInfor();
   removeCorrectAnswerDescription();
   removeWrongAnswerDescription();
+  hideNextQuestionBtn()
 }
 
 // button reset
@@ -137,6 +147,7 @@ function resetAll() {
   hideMoreInfor();
   removeCorrectAnswerDescription();
   removeWrongAnswerDescription();
+  hideNextQuestionBtn()
 }
 
 // button result
