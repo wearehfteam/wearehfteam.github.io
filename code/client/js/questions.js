@@ -6,23 +6,23 @@ const resultBox                = document.querySelector(".result-box");
 const showInforBtn             = document.querySelector(".more-infor-btn");
 const showInforBox             = document.querySelector(".flip-container");
 const correctAnswerDescription = document.querySelector(".correct-answer-description");
-const wrongAnswerDescription = document.querySelector(".wrong-answer-description");
-const nextQuestionBtn = document.querySelector(".next-question-btn");
-const resetBtn = document.querySelector(".reset-btn");
-const hideOptionBox = document.querySelector(".option-box")
-const hidePlayBox = document.querySelector(".card-box")
-const showOverBox = document.querySelector(".over-box")
+const wrongAnswerDescription   = document.querySelector(".wrong-answer-description");
+const nextQuestionBtn          = document.querySelector(".next-question-btn");
+const resetBtn                 = document.querySelector(".reset-btn");
+const hideOptionBox            = document.querySelector(".option-box")
+const hidePlayBox              = document.querySelector(".card-box")
+const showOverBox              = document.querySelector(".over-box")
 
 
-let questionIndex = 0;
+let questionIndex  = 0;
 let questionNumber = 0;
-var category      = 1;
-var myData        = null;
+var category       = 1;
+var myData         = null;
 
 
 function getRandAnsFromList(listAnswers, answer, index) {
 	var answers = listAnswers.filter(ques => ques !== answer)
-	answers = answers.sort(() => Math.random() - Math.random()).slice(0, 4);
+	    answers = answers.sort(() => Math.random() - Math.random()).slice(0, 4);
 	answers.sort(() => Math.random() - Math.random());
 	answers[index] = answer;
 	return answers;
@@ -162,7 +162,7 @@ function nextQuestion() {
 resetBtn.addEventListener("click", resetAll);
 
 function resetAll() {
-  questionIndex = 0;
+  questionIndex  = 0;
   questionNumber = 0
   hideQuizOverBox()
   loadQuizPage();
