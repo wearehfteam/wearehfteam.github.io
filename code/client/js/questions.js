@@ -5,124 +5,125 @@ const resultBtn = document.querySelector(".result-btn");
 const resultBox = document.querySelector(".result-box");
 const showInforBtn = document.querySelector(".more-infor-btn");
 const showInforBox = document.querySelector(".flip-container");
-const correctAnswerDescription = document.querySelector(
-  ".correct-answer-description"
-);
-const wrongAnswerDescription = document.querySelector(
-  ".wrong-answer-description"
-);
+const correctAnswerDescription = document.querySelector(".correct-answer-description");
+const wrongAnswerDescription = document.querySelector(".wrong-answer-description");
 const nextQuestionBtn = document.querySelector(".next-question-btn");
 const resetBtn = document.querySelector(".reset-btn");
 
 let questionIndex = 0;
-var i = 0;
 
-myApp = [
+myData = [
   {
     id: 1,
     question: "apple",
-    option: ["táo", "cam", "bưởi", "quả dưa hấu"],
-    answer: 0,
-    description:
+    options: ["táo", "cam", "bưởi", "quả dưa hấu"],
+    indexAns: 0,
+    moreInfo:
       "a round fruit with shiny red or green skin that is fairly hard and white inside",
   },
   {
     id: 2,
     question: "green",
-    option: ["xanh lá cây", "màu hồng", "màu đỏ", "màu trắng"],
-    answer: 0,
-    description:
+    options: ["xanh lá cây", "màu hồng", "màu đỏ", "màu trắng"],
+    indexAns: 0,
+    moreInfo:
       "having the colour of grass or the leaves of most plants and trees",
+    status: "not answer"
   },
   {
     id: 3,
     question: "cactus",
-    option: ["xương rồng", "cây táo", "cây ổi", "cây mận"],
-    answer: 0,
-    description:
-      "a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves,a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves",
+    options: ["xương rồng", "cây táo", "cây ổi", "cây mận"],
+    indexAns: 0,
+    moreInfo:
+      "a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves,",
+    status: "not answer"
   },
   {
     id: 4,
     question: "cat",
-    option: ["chuột", "mèo"],
-    answer: 1,
-    description:
+    options: ["chuột", "mèo"],
+    indexAns: 1,
+    moreInfo:
       "a small animal with soft fur that people often keep as a pet. Cats catch and kill birds and mice.",
+    status: "not answer"
   },
 ];
 
-function load() {
-  questionText.innerHTML = myApp[questionIndex].question;
-  inforText.innerHTML = myApp[questionIndex].description;
-  createOption();
-}
+function loadQuizPage() {
+  questionText.innerHTML = myData[questionIndex].question;
+  inforText.innerHTML = myData[questionIndex].moreInfo;
+  showFourAnswer();
+};
 
-// show 4 answer
-function createOption() {
+function showFourAnswer() {
   optionBox.innerHTML = "";
-  for (i = 0; i < myApp[questionIndex].option.length; i++) {
+  for (let i = 0; i < myData[questionIndex].options.length; i++) {
     const option = document.createElement("div");
-    option.innerHTML = myApp[questionIndex].option[i];
+    option.innerHTML = myData[questionIndex].options[i];
     option.classList.add("option");
     option.id = i;
-    option.setAttribute("onclick", "check(this)");
+    option.setAttribute("onclick", "checkAnswer(this)");
     optionBox.appendChild(option);
   }
-}
+};
 
-//check true/false
-
-function check(ele) {
+function checkAnswer(ele) {
   const id = ele.id;
-  if (id == myApp[questionIndex].answer) {
+  if (id == myData[questionIndex].indexAns) {
     ele.classList.add("correct");
-    showCorrectAnswerDescription();
+    showCorrectAnswerNotification();
     showNextQuestionBtn();
   } else {
     ele.classList.add("wrong");
-    showWrongAnswerDescription();
+    showWrongAnswerNotification();
     showNextQuestionBtn();
     for (let i = 0; i < optionBox.children.length; i++) {
-      if (optionBox.children[i].id == myApp[questionIndex].answer) {
+      if (optionBox.children[i].id == myData[questionIndex].indexAns) {
         optionBox.children[i].classList.add("show-correct");
       }
     }
   }
   disableOptions();
-}
+};
 
-function showWrongAnswerDescription() {
+function showWrongAnswerNotification() {
   wrongAnswerDescription.classList.add("show");
-}
-function removeWrongAnswerDescription() {
+};
+
+function hideWrongAnswerNotification() {
   correctAnswerDescription.classList.remove("show");
-}
-function showCorrectAnswerDescription() {
+};
+
+function showCorrectAnswerNotification() {
   correctAnswerDescription.classList.add("show");
-}
-function removeCorrectAnswerDescription() {
+};
+
+function hideCorrectAnswerNotification() {
   wrongAnswerDescription.classList.remove("show");
-}
+};
+
 function hideMoreInfor() {
   showInforBox.classList.remove("hover");
-}
+};
+
 function hideResultBox() {
   resultBox.classList.remove("show-result-box");
-}
+};
 
 function disableOptions() {
   for (let i = 0; i < optionBox.children.length; i++) {
     optionBox.children[i].removeAttribute("onclick");
-  }
-}
+  };
+};
 
 function showNextQuestionBtn(){
-  nextQuestionBtn.classList.remove("show")
-}
+  nextQuestionBtn.classList.remove("show");
+};
+
 function hideNextQuestionBtn(){
-  nextQuestionBtn.classList.add("show")
-}
+  nextQuestionBtn.classList.add("show");
+};
 
 //button nextquestion
 
@@ -130,40 +131,52 @@ nextQuestionBtn.addEventListener("click", nextQuestion);
 
 function nextQuestion() {
   questionIndex++;
-  load();
+  loadQuizPage();
   hideMoreInfor();
-  removeCorrectAnswerDescription();
-  removeWrongAnswerDescription();
-  hideNextQuestionBtn()
-}
+  hideCorrectAnswerNotification();
+  hideWrongAnswerNotification();
+  hideNextQuestionBtn();
+};
 
 // button reset
 resetBtn.addEventListener("click", resetAll);
 
 function resetAll() {
   questionIndex = 0;
-  load();
+  loadQuizPage();
   hideResultBox();
   hideMoreInfor();
-  removeCorrectAnswerDescription();
-  removeWrongAnswerDescription();
-  hideNextQuestionBtn()
-}
+  hideCorrectAnswerNotification();
+  hideWrongAnswerNotification();
+  hideNextQuestionBtn();
+};
 
 // button result
 resultBtn.addEventListener("click", showResult);
 
 function showResult() {
   resultBox.classList.toggle("show-result-box");
-}
+};
 
 // button more infor
 showInforBtn.addEventListener("click", showInfor);
 
 function showInfor() {
   showInforBox.classList.toggle("hover");
-}
+};
 
 window.onload = () => {
-  load();
+  loadQuizPage();
 };
+<<<<<<< HEAD
+=======
+
+
+async function fetchData(category) {
+  var res = await fetch(`http::/localhost:3000/questions/\$(category)`);
+  var data = await res.json();
+  await console.log(data);
+};
+
+fetchData(1);
+>>>>>>> 0678b102c806cddb93d9d3abd78440d979877f6b
