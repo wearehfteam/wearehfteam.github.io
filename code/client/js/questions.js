@@ -6,18 +6,22 @@ const resultBox                = document.querySelector(".result-box");
 const showInforBtn             = document.querySelector(".more-infor-btn");
 const showInforBox             = document.querySelector(".flip-container");
 const correctAnswerDescription = document.querySelector(".correct-answer-description");
-const wrongAnswerDescription   = document.querySelector(".wrong-answer-description");
-const nextQuestionBtn          = document.querySelector(".next-question-btn");
-const resetBtn                 = document.querySelector(".reset-btn");
+const wrongAnswerDescription = document.querySelector(".wrong-answer-description");
+const nextQuestionBtn = document.querySelector(".next-question-btn");
+const resetBtn = document.querySelector(".reset-btn");
+const hideOptionBox = document.querySelector(".option-box")
+const hidePlayBox = document.querySelector(".card-box")
+const showOverBox = document.querySelector(".over-box")
+
 
 let questionIndex = 0;
+let questionNumber = 0;
 var category      = 1;
 var myData        = null;
 
 
 function getRandAnsFromList(listAnswers, answer, index) {
-	var answers = listAnswers
-		.filter(ques => ques.vietnamese !== answer)
+	var answers = listAnswers.filter(ques => ques !== answer)
 	answers = answers.sort(() => Math.random() - Math.random()).slice(0, 4);
 	answers.sort(() => Math.random() - Math.random());
 	answers[index] = answer;
@@ -42,7 +46,9 @@ async function fetchData(category) {
 	} catch (error) {
 		console.log("Error in fetching data");
 		console.log(error);
-	}
+  }
+  console.log(questions);
+  
 	return questions
 }
 
@@ -50,6 +56,7 @@ async function loadQuizPage() {
 	await fetchData(category).then(data => {
 		myData = data;
 	})
+	questionNumber++
 	questionText.innerHTML = myData[questionIndex].question;
 	inforText.innerHTML    = myData[questionIndex].moreInfo;
 	showFourAnswer();
@@ -68,23 +75,27 @@ function showFourAnswer() {
 };
 
 function checkAnswer(ele) {
-	const id = ele.id;
-	if (id == myData[questionIndex].indexAns) {
-		ele.classList.add("correct");
-		showCorrectAnswerNotification();
-		showNextQuestionBtn();
-	} else {
-		ele.classList.add("wrong");
-		showWrongAnswerNotification();
-		showNextQuestionBtn();
-		for (let i = 0; i < optionBox.children.length; i++) {
-			if (optionBox.children[i].id == myData[questionIndex].indexAns) {
-				optionBox.children[i].classList.add("show-correct");
-			}
-		}
-	}
-	disableOptions();
+  const id = ele.id;
+  if (id == myData[questionIndex].indexAns) {
+    ele.classList.add("correct");
+    showCorrectAnswerNotification();
+    showNextQuestionBtn();
+  } else {
+    ele.classList.add("wrong");
+    showWrongAnswerNotification();
+    showNextQuestionBtn();
+    for (let i = 0; i < optionBox.children.length; i++) {
+      if (optionBox.children[i].id == myData[questionIndex].indexAns) {
+        optionBox.children[i].classList.add("show-correct");
+      }
+    }
+  }
+  disableOptions();
+  if(questionNumber == myData.length){
+    showOuizOverBox()
+  }
 };
+
 
 function showWrongAnswerNotification() {
 	wrongAnswerDescription.classList.add("show");
@@ -124,30 +135,42 @@ function hideNextQuestionBtn() {
 	nextQuestionBtn.classList.add("show");
 };
 
+
+function showOuizOverBox(){
+  hidePlayBox.classList.add("show-card-box");
+  showOverBox.classList.remove("show-over-box")
+}
+function hideQuizOverBox(){
+  hidePlayBox.classList.remove("show-card-box");
+  showOverBox.classList.add("show-over-box")
+}
+
 //button nextquestion
 
 nextQuestionBtn.addEventListener("click", nextQuestion);
 
 function nextQuestion() {
-	questionIndex++;
-	loadQuizPage();
-	hideMoreInfor();
-	hideCorrectAnswerNotification();
-	hideWrongAnswerNotification();
-	hideNextQuestionBtn();
+  questionIndex++;
+  loadQuizPage();
+  hideMoreInfor();
+  hideCorrectAnswerNotification();
+  hideWrongAnswerNotification();
+  hideNextQuestionBtn();
 };
 
 // button reset
 resetBtn.addEventListener("click", resetAll);
 
 function resetAll() {
-	questionIndex = 0;
-	loadQuizPage();
-	hideResultBox();
-	hideMoreInfor();
-	hideCorrectAnswerNotification();
-	hideWrongAnswerNotification();
-	hideNextQuestionBtn();
+  questionIndex = 0;
+  questionNumber = 0
+  hideQuizOverBox()
+  loadQuizPage();
+  hideResultBox();
+  hideMoreInfor();
+  hideCorrectAnswerNotification();
+  hideWrongAnswerNotification();
+  hideNextQuestionBtn();
 };
 
 // button result
@@ -165,5 +188,6 @@ function showInfor() {
 };
 
 window.onload = () => {
-	loadQuizPage();
+  loadQuizPage();
 };
+

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>flashCard by HF team</title>
-    <link rel="stylesheet" href="./css/questions.css" />
+    <link rel="stylesheet" href="css/questions.css" />
   </head>
   <body>
     <!-- all box -->
@@ -14,7 +14,7 @@
       <div class="result-text">show result in here</div>
     </div>
     <!-- card box -->
-    <div class="card-box blur">
+    <div class="card-box  blur ">
       <div class="flip-container">
         <div class="flipper">
           <div class="front question-box">
@@ -27,17 +27,23 @@
         </div>
       </div>
 
-      <div class="option-box"></div>
+      <div class="option-box hide-option-box"></div>
 
       <div class="description">
-        <div class="correct-answer-description description-text">CHÍNH XÁC</div>
-        <div class="wrong-answer-description description-text">THỬ LẠI LẦN SAU </div>
+        <div class="correct-answer-description description-text">perfect</div>
+        <div class="wrong-answer-description description-text">Try again later</div>
       </div>
 
       <div class="next-question">
         <button type="button" class="next-question-btn btn show">
           Next Question
         </button>
+      </div>
+    </div>
+     <!-- over box -->
+    <div class="over-box show-over-box">
+      <div class="over-box-text">
+        CONGRATULATIONS, YOU HAVE COMPLETED !
       </div>
     </div>
 
@@ -52,5 +58,5 @@
   </body>
   
 
-  <script src="./js/questions.js"></script>
+  <script src="js/questions.js"></script>
 </html>
