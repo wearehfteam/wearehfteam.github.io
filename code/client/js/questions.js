@@ -11,41 +11,45 @@ const nextQuestionBtn          = document.querySelector(".next-question-btn");
 const resetBtn                 = document.querySelector(".reset-btn");
 
 let questionIndex = 0;
+var category      = 1;
+var myData        = null;
 
-myData = [{
-		id      : 1,
-		question: "apple",
-		options : ["táo", "cam", "bưởi", "quả dưa hấu"],
-		indexAns: 0,
-		moreInfo: "a round fruit with shiny red or green skin that is fairly hard and white inside",
-	},
-	{
-		id      : 2,
-		question: "green",
-		options : ["xanh lá cây", "màu hồng", "màu đỏ", "màu trắng"],
-		indexAns: 0,
-		moreInfo: "having the colour of grass or the leaves of most plants and trees",
-		status  : "not answer"
-	},
-	{
-		id      : 3,
-		question: "cactus",
-		options : ["xương rồng", "cây táo", "cây ổi", "cây mận"],
-		indexAns: 0,
-		moreInfo: "a plant that grows in hot dry regions, especially one with thick stems covered in spines but without leaves,",
-		status  : "not answer"
-	},
-	{
-		id      : 4,
-		question: "cat",
-		options : ["chuột", "mèo"],
-		indexAns: 1,
-		moreInfo: "a small animal with soft fur that people often keep as a pet. Cats catch and kill birds and mice.",
-		status  : "not answer"
-	},
-];
 
-function loadQuizPage() {
+function getRandAnsFromList(listAnswers, answer, index) {
+	var answers = listAnswers
+		.filter(ques => ques.vietnamese !== answer)
+	answers = answers.sort(() => Math.random() - Math.random()).slice(0, 4);
+	answers.sort(() => Math.random() - Math.random());
+	answers[index] = answer;
+	return answers;
+}
+
+async function fetchData(category) {
+	try {
+		let response    = await fetch(`http://localhost:3000/questions/${category}`)
+		let oriData     = await response.json();
+		let listAnswers = oriData.map(ques => ques.vietnamese);
+		var questions   = await oriData.map(ques => {
+			var randIndex = Math.floor(Math.random() * 4);
+			return {
+				id      : ques.id,
+				question: ques.english,
+				moreInfo: ques.info,
+				indexAns: randIndex,
+				options : getRandAnsFromList(listAnswers, ques.vietnamese, randIndex)
+			}
+		})
+	} catch (error) {
+		console.log("Error in fetching data");
+		console.log(error);
+	}
+	return questions
+}
+
+async function loadQuizPage() {
+	await fetchData(category).then(data => {
+		myData = data;
+	})
 	questionText.innerHTML = myData[questionIndex].question;
 	inforText.innerHTML    = myData[questionIndex].moreInfo;
 	showFourAnswer();
