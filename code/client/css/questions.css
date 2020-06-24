@@ -53,8 +53,26 @@ body{
     width:600px;
     font-weight: bold;
     padding: 50px 10px;
-    /* border-radius: 20px; */
-    /* border: 2px solid black; */
+    animation: fadeInRight 1s ease;
+    
+}
+.show-card-box{
+    display: none;
+}
+
+.over-box{
+    width:600px;
+    font-weight: bold;
+    padding: 100px 10px;
+    background-image: url(../img/hd6.gif); 
+    background-size: cover;
+    background-position: center;
+    animation: fadeInRight 1s ease;
+    text-align: center;
+    font-size: 40px;
+}
+.show-over-box{
+    display: none;
 }
 
 .card-box .question-box{
@@ -92,7 +110,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-size: 80px;
     color: black;
-    position: relatcive;
+    position: relative;
     text-transform: uppercase;
 
 }
@@ -100,9 +118,10 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 20px;  
     
 }
+
 .card-box .option-box .option{
     background-color: #ffffff;
     flex-basis: calc(50% - 20px);

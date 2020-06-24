@@ -9,9 +9,13 @@ const correctAnswerDescription = document.querySelector(".correct-answer-descrip
 const wrongAnswerDescription = document.querySelector(".wrong-answer-description");
 const nextQuestionBtn = document.querySelector(".next-question-btn");
 const resetBtn = document.querySelector(".reset-btn");
+const hideOptionBox = document.querySelector(".option-box")
+const hidePlayBox = document.querySelector(".card-box")
+const showOverBox = document.querySelector(".over-box")
+
 
 let questionIndex = 0;
-
+let questionNumber = 0;
 myData = [
   {
     id: 1,
@@ -51,9 +55,11 @@ myData = [
 ];
 
 function loadQuizPage() {
+  questionNumber++
   questionText.innerHTML = myData[questionIndex].question;
   inforText.innerHTML = myData[questionIndex].moreInfo;
   showFourAnswer();
+  
 };
 
 function showFourAnswer() {
@@ -85,7 +91,11 @@ function checkAnswer(ele) {
     }
   }
   disableOptions();
+  if(questionNumber == myData.length){
+    showOuizOverBox()
+  }
 };
+
 
 function showWrongAnswerNotification() {
   wrongAnswerDescription.classList.add("show");
@@ -125,6 +135,19 @@ function hideNextQuestionBtn(){
   nextQuestionBtn.classList.add("show");
 };
 
+
+function showOuizOverBox(){
+  hidePlayBox.classList.add("show-card-box");
+  showOverBox.classList.remove("show-over-box")
+}
+function hideQuizOverBox(){
+  hidePlayBox.classList.remove("show-card-box");
+  showOverBox.classList.add("show-over-box")
+}
+
+
+
+
 //button nextquestion
 
 nextQuestionBtn.addEventListener("click", nextQuestion);
@@ -136,13 +159,17 @@ function nextQuestion() {
   hideCorrectAnswerNotification();
   hideWrongAnswerNotification();
   hideNextQuestionBtn();
+  
 };
 
 // button reset
 resetBtn.addEventListener("click", resetAll);
 
 function resetAll() {
+  
   questionIndex = 0;
+  questionNumber = 0
+  hideQuizOverBox()
   loadQuizPage();
   hideResultBox();
   hideMoreInfor();
