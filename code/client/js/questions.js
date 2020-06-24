@@ -195,8 +195,6 @@ function showInfor() {
 window.onload = () => {
   loadQuizPage();
 };
-<<<<<<< HEAD
-=======
 
 
 async function fetchData(category) {
@@ -206,4 +204,3 @@ async function fetchData(category) {
 };
 
 fetchData(1);
->>>>>>> 0678b102c806cddb93d9d3abd78440d979877f6b
