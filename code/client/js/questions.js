@@ -191,3 +191,16 @@ window.onload = () => {
   loadQuizPage();
 };
 
+shuffle = function (question) {
+
+	newQuestion = [];
+	while (question.length) {
+		indx =parseInt(Math.random() * 1000 % question.length);
+		newQuestion.push(question[indx]);
+		question.splice(indx, 1)
+		console.log(indx)
+	}
+	console.log(newQuestion);
+	return newQuestion;
+  }
+
