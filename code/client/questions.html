@@ -3,60 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>flashCard by HF team</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c6637a4197.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css/questions.css" />
+    <title>flashCard by HF team</title>
   </head>
   <body>
     <!-- all box -->
-  <div class="home-box">
-    <!-- result box -->
-    <div class="result-box blur">
-      <div class="result-text">show result in here</div>
-    </div>
-    <!-- card box -->
-    <div class="card-box  blur ">
-      <div class="flip-container">
-        <div class="flipper">
-          <div class="front question-box">
-            <div class="question-text">Questions</div>
-          </div>
+    <div class="home-box">
+      <!-- result box -->
+      <div class="result-box blur"></div>
+      <!-- card box -->
+      <div class="card-box blur">
+        <div class="flip-container">
+          <div class="flipper">
+            <div class="front question-box">
+              <div class="question-text">Questions</div>
+            </div>
 
-          <div class="back infor-box">
-            <div class="infor-text"></div>
+            <div class="back infor-box">
+              <div class="infor-text"></div>
+            </div>
           </div>
+        </div>
+
+        <div class="option-box hide-option-box"></div>
+
+        <div class="description">
+          <div class="correct-answer-description description-text">perfect</div>
+          <div class="wrong-answer-description description-text">
+            Try again later
+          </div>
+        </div>
+
+        <div class="next-question">
+          <button type="button" class="next-question-btn btn show">
+            Next Question
+          </button>
+        </div>
+      </div>
+      <!-- over box -->
+      <div class="over-box show-over-box">
+        <div class="over-box-text">
+          CONGRATULATIONS, YOU HAVE COMPLETED !
         </div>
       </div>
 
-      <div class="option-box hide-option-box"></div>
-
-      <div class="description">
-        <div class="correct-answer-description description-text">perfect</div>
-        <div class="wrong-answer-description description-text">Try again later</div>
-      </div>
-
-      <div class="next-question">
-        <button type="button" class="next-question-btn btn show">
-          Next Question
-        </button>
+      <!-- menu box -->
+      <div class="menu-box blur">
+        <button type="button" class="result-btn btn">result</button>
+        <button type="button" class="reset-btn btn">Reset</button>
+        <button type="button" class="shuffle-btn btn">Shuffle</button>
+        <button type="button" class="more-infor-btn btn">More info</button>
       </div>
     </div>
-     <!-- over box -->
-    <div class="over-box show-over-box">
-      <div class="over-box-text">
-        CONGRATULATIONS, YOU HAVE COMPLETED !
-      </div>
-    </div>
-
-    <!-- menu box -->
-    <div class="menu-box blur">
-      <button type="button" class="result-btn btn">result</button>
-      <button type="button" class="reset-btn btn">Reset</button>
-      <button type="button" class="shuffle-btn btn">Shuffle</button>
-      <button type="button" class="more-infor-btn btn">More info</button>
-    </div>
-  </div>
   </body>
-  
 
   <script src="js/questions.js"></script>
 </html>

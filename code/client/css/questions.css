@@ -1,362 +1,388 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-body{
-    /* background: linear-gradient(-45deg,  #EE7752, #E73C7E, #23A6D5, #23D5AB); */
-    background: url(../img/background.jpg) no-repeat;
-    background: url(../img/backgroundQT.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: 'Roboto', sans-serif;
-    justify-content: top center ;
-}
-/* Contains result box, card box and menu box  */
-.home-box{
-    max-width: 1200px;
-    height: 650px;
-    /* background-color:red; */
-    margin: 145px auto;
-    
-    display: flex;
-    justify-content: center ;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.blur{
-    background-color: rgb(255, 255, 255); 
-    background-color: rgba(255, 239, 239, 0.4); 
-    
+html {
+  color: #555;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 62.5%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: url(../img/backgroundQT.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+/* Contains result box, card box and menu box  */
+.home-box {
+  max-width: 1200px;
+  height: 650px;
+  /* background-color:red; */
+  margin: 145px auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.blur {
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 239, 239, 0.4);
 }
 
 /* result box */
-.result-box{
-    display: none;
+.result-box {
+  display: none;
 }
 
-.show-result-box{
-    display: flex;
-    flex-direction: column;
-    padding: 50px 40px;
-    /* border-radius: 20px; */
-    border-right: 1px solid black;
-    animation: fadeInRight 1s ease;
+.result-box .answer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 10%;
+
+  margin: 3px;
+
+  font-size: 30px;
+}
+.result-box .answer .fa-check {
+  color: green;
+}
+.result-box .answer .fa-times {
+  color: red;
+}
+.result-box .answer .fa-question {
+  color: gray;
 }
 
-.result-box .result-text{
-    padding: 50px ;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    color: black;
-    position: relative;
-
+.show-result-box {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 40px;
+  /* border-radius: 20px; */
+  animation: fadeInRight 1s ease;
 }
+
 /* card box contains question box, infor box, option box, decripton box and next-question button */
-.card-box{
-    width:600px;
-    font-weight: bold;
-    padding: 50px 10px;
-    animation: fadeInRight 1s ease;
-    
+.card-box {
+  width: 600px;
+  font-weight: bold;
+  padding: 50px 10px;
+  animation: fadeInRight 1s ease;
 }
-.show-card-box{
-    display: none;
-}
-
-.over-box{
-    width:600px;
-    font-weight: bold;
-    padding: 100px 10px;
-    background-image: url(../img/hd6.gif); 
-    background-size: cover;
-    background-position: center;
-    animation: fadeInRight 1s ease;
-    text-align: center;
-    font-size: 40px;
-}
-.show-over-box{
-    display: none;
+.show-card-box {
+  display: none;
 }
 
-.card-box .question-box{
-    background-image: url(../img/backgroundQT.jpg); 
-    background-attachment: fixed;
-    background-color: #ffffff;
-    border: 5px solid black;
-    border-radius: 10px;
-    font-size: 40px;
-    text-align: center;
-    
+.over-box {
+  width: 600px;
+  font-weight: bold;
+  padding: 100px 10px;
+  background-image: url(../img/hd6.gif);
+  background-size: cover;
+  background-position: center;
+  animation: fadeInRight 1s ease;
+  text-align: center;
+  font-size: 40px;
 }
-.card-box .infor-box{
-    background-image: url(../img/backgroundQT.jpg);
-    border: 1px solid black;
-    border-radius: 10px;
-    font-size: 30px;
-    text-align: center;
-    border: 2px solid black;
-       
+.show-over-box {
+  display: none;
 }
 
-.card-box .infor-box .infor-text{
-    padding: 40px ;
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: black;
-    position: relative;
-    text-transform: uppercase;
-
+.card-box .question-box {
+  background-image: url(../img/backgroundQT.jpg);
+  background-attachment: fixed;
+  background-color: #ffffff;
+  border: 5px solid black;
+  border-radius: 10px;
+  font-size: 40px;
+}
+.card-box .infor-box {
+  background-image: url(../img/backgroundQT.jpg);
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 30px;
+  text-align: center;
+  border: 2px solid black;
 }
 
-.card-box .question-box .question-text{
-    padding: 80px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 80px;
-    color: black;
-    position: relative;
-    text-transform: uppercase;
+.card-box .infor-box .infor-text {
+  position: relative;
 
-}
-.card-box .option-box{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 20px;  
-    
+  width: 100%;
+  height: 100%;
+
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+
+  color: black;
+
+  text-transform: uppercase;
 }
 
-.card-box .option-box .option{
-    background-color: #ffffff;
-    flex-basis: calc(50% - 20px);
-    max-width: calc(50% - 20px);  
-    margin-top: 30px; 
-    padding: 5px 5px;
-    text-align: center;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 800;
-    border: 1px solid black;
-    border-radius: 10px;
-    position: relative;
+.card-box .question-box .question-text {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
 }
-.card-box .option-box .option:hover{
-    animation: pulse 1s linear;
+.card-box .option-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
 }
-.card-box .option-box .option.show-correct{
-    background-color: green;
-    border-color: black;
-    animation: pulse 1s linear;
+
+.card-box .option-box .option {
+  background-color: #ffffff;
+  flex-basis: calc(50% - 20px);
+  max-width: calc(50% - 20px);
+  margin-top: 30px;
+  padding: 5px 5px;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
 }
-.card-box .option-box .option.correct{
-    background-color: green;
-    border-color: black;
-    animation: pulse 1s linear;
+.card-box .option-box .option:hover {
+  animation: pulse 1s linear;
+}
+.card-box .option-box .option.show-correct {
+  background-color: green;
+  border-color: black;
+  animation: pulse 1s linear;
+}
+.card-box .option-box .option.correct {
+  background-color: green;
+  border-color: black;
+  animation: pulse 1s linear;
 }
 
 @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100%{
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
   }
-.card-box .option-box .option.correct::before{
-    content: '';
-    position: absolute;   
-    height: 20px;
-    width: 20px;
-    right: 5px;
-    top: 5px;
-    background-image: url("../img/correct.png");
-    background-size: 15px;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: fadeInRight .5s linear forwards;
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.card-box .option-box .option.correct::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  right: 5px;
+  top: 5px;
+  background-image: url('../img/correct.png');
+  background-size: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fadeInRight 0.5s linear forwards;
+}
+.card-box .option-box .option.wrong {
+  background-color: red;
+  border-color: black;
+  animation: shake 1s linear;
+}
+.card-box .option-box .option.wrong::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  right: 5px;
+  top: 5px;
+  background-image: url('../img/wrong.png');
+  background-size: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fadeInRight 0.5s linear forwards;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
 
-}
-.card-box .option-box .option.wrong{
-    background-color: red;
-    border-color: black;
-    animation: shake 1s linear;
-}
-.card-box .option-box .option.wrong::before{
-    content: '';
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    right: 5px;
-    top: 5px;
-    background-image: url("../img/wrong.png");
-    background-size: 15px;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: fadeInRight .5s linear forwards;
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
 
-}
-@keyframes shake{
-        10%, 90% {
-            transform: translate3d(-1px, 0, 0);
-        }
-        
-        20%, 80% {
-            transform: translate3d(2px, 0, 0);
-        }
-        
-        30%, 50%, 70% {
-            transform: translate3d(-4px, 0, 0);
-        }
-        
-        40%, 60% {
-            transform: translate3d(4px, 0, 0);
-        }
-}
-@keyframes fadeInRight{
-    
-        0% {
-           opacity: 0;
-           transform: translateX(5px);
-        }
-        100% {
-           opacity: 1;
-           transform: translateX(0);
-        }
-     
-}
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
 
-
-
-.card-box .wrong-answer-description{
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-top: 30px;
-    padding: 15px;
-    display: none;
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
-.card-box .correct-answer-description{
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-top: 30px;
-    padding: 15px;
-    display: none;
-}
-.card-box .correct-answer-description.show{
-    width: 400px;
-    display: block;
-    animation: fadeInRight 1s ease;
-    
-
-}
-.card-box .wrong-answer-description.show{
-    display: block;
-    animation: fadeInRight 1s ease;
-    width: 400px;
-
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.card-box .description-text{
-    padding: 10px ;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    color: black;
-    position: relative;
-    text-transform: uppercase;
-    
+.card-box .wrong-answer-description {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 15px;
+  display: none;
 }
-.card-box .description{
-    text-align: center;
-    padding: 0px 95px;
-
+.card-box .correct-answer-description {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 15px;
+  display: none;
+}
+.card-box .correct-answer-description.show {
+  width: 400px;
+  display: block;
+  animation: fadeInRight 1s ease;
+}
+.card-box .wrong-answer-description.show {
+  display: block;
+  animation: fadeInRight 1s ease;
+  width: 400px;
 }
 
+.card-box .description-text {
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: black;
+  position: relative;
+  text-transform: uppercase;
+}
+.card-box .description {
+  text-align: center;
+  padding: 0px 95px;
+}
 
-.card-box .next-question{
-    text-align: center;
-    
+.card-box .next-question {
+  text-align: center;
 }
 
 /* menu box */
 
-.menu-box{
-    display: flex;
-    flex-direction: column;
-    justify-content:  space-between;
-    padding: 50px 50px;
-    border-left: 1px solid black;
+.menu-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 50px;
 }
 
-.next-question .next-question-btn{
-    margin-top: 50px;
-    animation: fadeInRight 1s ease;
-    
+.next-question .next-question-btn {
+  margin-top: 50px;
+  animation: fadeInRight 1s ease;
 }
-.next-question .next-question-btn.show{
-    display: none;
+.next-question .next-question-btn.show {
+  display: none;
 }
-
 
 .btn {
-    height: 32px;
-    padding: 15 15px;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0, 0.4); 
-    border: 1px solid black;
-    border-radius: 4px;
-    transition: all 0.2s ease-in-out;
-    text-transform: uppercase;
+  height: 32px;
+  padding: 15 15px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid black;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
 }
 
 .btn:hover {
-    box-shadow: 1px 1px gray, 2px 2px black, 3px 3px gray;
-    transform: translateX(-3px);
+  box-shadow: 1px 1px gray, 2px 2px black, 3px 3px gray;
+  transform: translateX(-3px);
 }
-
 
 /* flip card*/
 
 .flip-container {
-	perspective: 1000;
+  perspective: 1000;
 }
 
 .flip-container.hover .flipper {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
- 
+
 /* Kích thước các mặt */
-.flip-container, .front, .back {
-	width: 590px;
-	height: 280px;
+.flip-container,
+.front,
+.back {
+  width: 590px;
+  height: 280px;
 }
- 
+
 /* flip speed  */
 .flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
- 
-	position: relative;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
 }
- 
+
 /*Ẩn các mặt sau (back face) khi hoán chuyển các mặt */
-.front, .back {
-	backface-visibility: hidden;
- 
-	position: absolute;
-	top: 0;
-	left: 0;
+.front,
+.back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
 }
- 
+
 /* front pane, placed above back */
 .front {
-	z-index: 2;
-	transform: rotateY(0deg);
+  z-index: 2;
+  transform: rotateY(0deg);
 }
- 
+
 /* back, initially hidden pane */
 .back {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
