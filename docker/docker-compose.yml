@@ -16,10 +16,10 @@ services:
       MYSQL_USER: 'flashcard'
       MYSQL_PASSWORD: '123456'
     volumes:
-
       - ./data.sql:/docker-entrypoint-initdb.d/data.sql
       - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./my.cnf:/etc/mysql/my.cnf
+      - ./custom.cnf:/etc/mysql/conf.d/custom.cnf
     expose:
       - '3306'
 
