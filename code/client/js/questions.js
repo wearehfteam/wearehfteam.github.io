@@ -245,10 +245,11 @@ function shuffle() {
 		dt.indexAns = dt.options.indexOf(answer);
 	});
 	console.log(listOfQuestions);
-  
+  listOfQuestions.map(item => RESULT_BOX.removeChild(RESULT_BOX.firstChild));
 	questionIndex = 0;
 	hideQuizOverBox();
   createNewQuestion();
+  creatAnswersForResultBox();
   hideResultBox();
   hideMoreInfor();
   hideAnswerNotifications();
