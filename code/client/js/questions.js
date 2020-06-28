@@ -107,6 +107,21 @@ let saveQuestionStatus = (status = 'not answer') => {
     status === 'true' ? 'fa-check' : 'fa-times'
   );
 };
+
+let resetAnswerStatus = () => {
+  // Reset status in array
+  listOfQuestions.forEach( question => {
+    question.status = 'not answer';
+  })
+
+  // Reset the status icons on UI
+  let answerDivs = document.querySelectorAll('.answer');
+  answerDivs.forEach( answer => {
+    answer.children[1].classList.replace('fa-check', 'fa-question');
+    answer.children[1].classList.replace('fa-times', 'fa-question');
+  })
+}
+
 let checkAnswering = (chosenOption) => {
   const id = chosenOption.id;
   let status = 'not answer';
@@ -199,6 +214,7 @@ RESET_BTN.addEventListener('click', () => {
   hideMoreInfor();
   hideAnswerNotifications();
   hideNextQuestionBtn();
+  resetAnswerStatus();
 });
 
 RESULT_BTN.addEventListener('click', () => {
