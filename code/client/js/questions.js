@@ -12,6 +12,7 @@ const NEXT_QUESTION_BTN = document.querySelector('.next-question-btn');
 
 const RESULT_BTN = document.querySelector('.result-btn');
 const RESET_BTN = document.querySelector('.reset-btn');
+const SHUFFLE_BTN = document.querySelector('.shuffle-btn');
 const SHOW_MORE_INFOR_BTN = document.querySelector('.more-infor-btn');
 
 const CORRECT_ANSWER_DESCRIPTION = document.querySelector(
@@ -21,7 +22,7 @@ const WRONG_ANSWER_DESCRIPTION = document.querySelector(
   '.wrong-answer-description'
 );
 
-let category = 1;
+let category = getDeck();
 let listOfQuestions = [];
 let questionIndex = 0;
 let numberOfAnsweredQuestions = 0;
@@ -226,17 +227,52 @@ SHOW_MORE_INFOR_BTN.addEventListener('click', () => {
   console.log('hello');
 });
 
-let shuffle = function (question) {
-  newQuestion = [];
-  while (question.length) {
-    indx = parseInt((Math.random() * 1000) % question.length);
-    newQuestion.push(question[indx]);
-    question.splice(indx, 1);
-    console.log(indx);
-  }
-  console.log(newQuestion);
-  return newQuestion;
+
+window.onload = () => {
+  loadQuizPage();
 };
+
+// button shuffle
+SHUFFLE_BTN.addEventListener("click", shuffle);
+
+function shuffle() {
+
+	listOfQuestions = randomList(listOfQuestions);
+	listOfQuestions.map(dt =>{
+		let answer = dt.options[dt.indexAns];
+		dt.status = "not answer";
+		dt.options = randomList(dt.options);
+		dt.indexAns = dt.options.indexOf(answer);
+	});
+	console.log(listOfQuestions);
+  
+	questionIndex = 0;
+	hideQuizOverBox();
+  createNewQuestion();
+  hideResultBox();
+  hideMoreInfor();
+  hideAnswerNotifications();
+  hideNextQuestionBtn();
+  resetAnswerStatus();
+}
+
+function randomList(arr) {
+	let newArr = [];
+	while (arr.length) {
+		indx = parseInt(Math.random() * 1000 % arr.length);
+		newArr.push(arr[indx]);
+		arr.splice(indx, 1)
+	}
+	
+	return newArr;
+}
+
+function getDeck() {
+	var queryString = decodeURIComponent(window.location.search);
+	queryString = queryString.substring(1);
+	var queries = queryString.split("&");
+	return queries[0];
+}
 
 window.onload = () => {
   fetchListOfQuestions(category).then((data) => {

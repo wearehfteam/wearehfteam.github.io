@@ -14,21 +14,12 @@ async function fetchData() {
     console.log(data[0]);
     
     data.map(dt =>{
-        // const card = document.createElement("div");
-        // card.classList.add("flip-card");
-
-        // const card_inner = document.createElement("div");
-        // carcard_inner.classList.add("flip-card-inner");
-
-        // option.setAttribute("onclick", "check(this)");
-        // optionBox.appendChild(option);
-        // image.src = dt.image;
-        // name.innerHTML =  dt.name;
+    
 
         deck.innerHTML+=`
         <div class="flip-card">
             <div class="flip-card-inner">
-            <a href="https://google.com/${dt.id}">
+            <a href="questions.html?${dt.id}">
                 <div class="flip-card-front">
                     <img lass="flip-card-front" src="${dt.image}" alt="Avatar"
                         style="width:300px;height:300px;border-radius: 50%;">

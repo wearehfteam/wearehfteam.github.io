@@ -34,7 +34,7 @@ INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('khang', '1'
 INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('animal', '1');
 
 INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('1', 'trái cây', ' https://image.thanhnien.vn/1080/uploaded/minhnguyet/2019_10_10/trai-cay_boqu.jpg');
-INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('2', 'động vật', 'https://i.ytimg.com/vi/IStTGXckv0A/maxresdefault.jpg');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('2', 'động vật', 'https://mediacdn.cincopa.com/v2/651402/505!V1xCAI5_pDw_ID/1/1040x695-Pee-Wee-Kitten-Fosters_Cash-Junior-Emmylou_CA_July2018_0006.jpg');
 INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('3', 'cây cối', 'https://tiengtrunganhduong.com/Images/images/tu-vung-tieng-trung-chu-de-cay-coi.jpg');
 INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('4', 'màu sắc', 'https://meovat9.com/wp-content/uploads/2013/07/Boi-tinh-yeu-thong-qu-mau-sac.png');
 
