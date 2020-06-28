@@ -24,7 +24,7 @@ const WRONG_ANSWER_DESCRIPTION = document.querySelector(
 let category = 1;
 let listOfQuestions = [];
 let questionIndex = 0;
-let questionNumber = 0;
+let numberOfAnsweredQuestions = 0;
 
 let getRandAnsFromList = (listAnswers, answer, index) => {
   let answers = listAnswers.filter((ques) => ques !== answer);
@@ -61,7 +61,7 @@ let fetchListOfQuestions = async (category = 1) => {
 };
 
 let createNewQuestion = () => {
-  questionNumber++;
+  numberOfAnsweredQuestions++;
   QUESTION_TEXT.innerHTML = listOfQuestions[questionIndex].question;
   MORE_INFOR_TEXT.innerHTML = listOfQuestions[questionIndex].moreInfo;
   createFourOptions();
@@ -85,7 +85,7 @@ let creatAnswersForResultBox = () => {
     let contentDiv = document.createElement('p');
     let iconDiv = document.createElement('i');
 
-    answerDiv.innerHTML = `${index + 1}. ${question.question}`;
+    answerDiv.innerHTML = `${question.question}`;
 
     answerDiv.classList.add('answer');
     iconDiv.classList.add('fas', 'fa-question');
@@ -101,8 +101,12 @@ let creatAnswersForResultBox = () => {
 
 let saveQuestionStatus = (status = 'not answer') => {
   listOfQuestions[questionIndex].status = status;
+  let answerDivs = document.querySelectorAll('.answer');
+  answerDivs[questionIndex].children[1].classList.replace(
+    'fa-question',
+    status === 'true' ? 'fa-check' : 'fa-times'
+  );
 };
-
 let checkAnswering = (chosenOption) => {
   const id = chosenOption.id;
   let status = 'not answer';
@@ -128,7 +132,7 @@ let checkAnswering = (chosenOption) => {
 
   showNextQuestionBtn();
 
-  if (questionNumber == listOfQuestions.length) {
+  if (numberOfAnsweredQuestions == listOfQuestions.length) {
     showOuizOverBox();
   }
 };
@@ -188,7 +192,7 @@ NEXT_QUESTION_BTN.addEventListener('click', () => {
 
 RESET_BTN.addEventListener('click', () => {
   questionIndex = 0;
-  questionNumber = 0;
+  numberOfAnsweredQuestions = 0;
   hideQuizOverBox();
   createNewQuestion();
   hideResultBox();
