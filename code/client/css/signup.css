@@ -19,7 +19,7 @@ body {
   max-width: 192rem;
   width: 80%;
   height: 90%;
-  background: url("../img/bg game.png") no-repeat;
+  background: url("../img/signup.png") no-repeat;
   background-color: white;
   border-radius: 20px;
   background-size: cover;
@@ -36,7 +36,7 @@ body {
 .section_form_title {
   font-weight: 700;
   font-size: 3.5rem;
-  color: #f89287;
+  color: #1b1d6b;
 }
 .social_btn {
   margin-top: 2rem;
@@ -64,26 +64,26 @@ body {
 .input_container {
   position: relative;
   width: 35rem;
-  border-bottom: 1px solid rgb(241, 130, 66);
+  border-bottom: 1px solid #1b1d6b;
 }
 .input_container > svg {
   position: absolute;
   top: 20px;
-  color: #f89287;
+  color: #1b1d6b;
 }
 .form {
+  float: right;
   margin: 12.5rem 2.5rem;
 }
 .input_container > input {
   font-weight: 300;
-  color: black;
   padding: 1.25rem 1.5rem;
   font-size: 1rem;
   border: none;
   background-color: transparent;
 }
 .input_container > input::placeholder {
-  color: #f89287;
+  color: #1b1d6b;
 }
 .form input:focus {
   outline: none;
@@ -96,10 +96,12 @@ body {
 
   font-size: 1rem;
 }
-#btn_signin {
-  background-color: #f89287;
+#btn_signup {
+  color: white;
+  background-color: #1b1d6b;
 }
-#btn_signin:hover {
-  border: 1px solid #f89287;
+#btn_signup:hover {
+  color: #1b1d6b;
+  border: 1px solid #1b1d6b;
   background-color: transparent;
 }
