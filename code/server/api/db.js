@@ -1,12 +1,12 @@
-'use strict';
-const mysql = require('mysql');
+"use strict";
+const mysql = require("mysql");
 
 const db = mysql.createConnection({
-  host: 'mysql',
+  host: "sql12.freesqldatabase.com",
   port: 3306,
-  user: 'flashcard',
-  password: '123456',
-  database: 'flash_card'
+  user: "sql12351810",
+  password: "hFzLGGXLDd",
+  database: "sql12351810",
 });
 
 module.exports = db;
