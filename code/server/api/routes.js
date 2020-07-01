@@ -23,4 +23,5 @@ module.exports = function (app) {
 
   app.route("/questions/:deck").get(questionCtrl.getByDeck);
   app.route("/login").post(accountCtrl.detail);
+  app.route("/signup").post(accountCtrl.store);
 };

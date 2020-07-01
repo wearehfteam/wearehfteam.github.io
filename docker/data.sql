@@ -33,10 +33,12 @@ INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('son', '1');
 INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('khang', '1');
 INSERT INTO `flash_card`.`account` (`userName`, `password`) VALUES ('animal', '1');
 
-INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('1', 'trái cây', ' https://image.thanhnien.vn/1080/uploaded/minhnguyet/2019_10_10/trai-cay_boqu.jpg');
-INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('2', 'động vật', 'https://i.ytimg.com/vi/IStTGXckv0A/maxresdefault.jpg');
-INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('3', 'cây cối', 'https://tiengtrunganhduong.com/Images/images/tu-vung-tieng-trung-chu-de-cay-coi.jpg');
-INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('4', 'màu sắc', 'https://meovat9.com/wp-content/uploads/2013/07/Boi-tinh-yeu-thong-qu-mau-sac.png');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('1', 'Trái cây', 'https://image.flaticon.com/icons/svg/3054/3054881.svg');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('2', 'Động vật', 'https://image.flaticon.com/icons/svg/3069/3069178.svg');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('3', 'Cây cối', 'https://image.flaticon.com/icons/svg/2913/2913483.svg');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('4', 'Màu sắc', 'https://image.flaticon.com/icons/svg/2919/2919586.svg');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('5', 'Vũ trụ', 'https://image.flaticon.com/icons/svg/2949/2949013.svg');
+INSERT INTO `flash_card`.`decks` (`id`, `name`, `image`) VALUES ('6', 'Đồ ăn', 'https://image.flaticon.com/icons/svg/2922/2922037.svg');
 
 INSERT INTO `flash_card`.`questions` (`id`, `deck`, `english`, `vietnamese`, `info`) VALUES ('1', '1', 'apple', 'quả táo', 'a round fruit with shiny red or green skin that is fairly hard and white inside');
 INSERT INTO `flash_card`.`questions` (`id`, `deck`, `english`, `vietnamese`, `info`) VALUES ('2', '1', 'orange', 'quả cam', 'a round citrus fruit with thick skin of a colour between red and yellow and a lot of sweet juice');

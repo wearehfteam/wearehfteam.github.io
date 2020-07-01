@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;800&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -6,20 +7,34 @@
 }
 html {
   font-size: 62.5%;
+  cursor: pointer;
 }
-.top {
-  margin-top: 10rem;
+body {
+  background: url("../img/background.jpg") no-repeat;
+  background-size: cover;
 }
-.logo img {
+.card {
+  position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+.logo {
+  background: url("../img/logo.png") no-repeat;
+  width: 80%;
+  height: 80rem;
+  background-size: 55%;
+  margin-top: 10rem;
+  margin-left: 5rem;
 }
 .content {
-  margin-top: 20rem;
+  position: absolute;
+  right: 15rem;
+  top: 20rem;
 }
 .content h1 {
   color: #ef2f62;
-  font-size: 12rem;
+  font-family: "Raleway";
+  font-size: 15rem;
   font-weight: 800;
   -webkit-text-stroke: 1px white;
 }
@@ -39,13 +54,16 @@ html {
   font-size: 2rem;
   color: black;
 }
+a {
+  text-decoration: none;
+}
 .content .btn-play a:hover {
   cursor: pointer;
   text-decoration: none;
 }
 .content p {
-  position: absolute;
-  top: 15rem;
+  position: relative;
+  bottom: 0;
   left: 5rem;
   z-index: 1;
   font-size: 40rem;

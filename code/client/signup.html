@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/signup.css" />
     <link rel="stylesheet" href="./css/fontawsome/all.css" />
     <link
       rel="shortcut icon"
@@ -12,19 +12,20 @@
     />
     <title>Flash Card</title>
   </head>
+
   <body>
     <div class="section">
       <div class="form">
         <h2 class="section_form_title">
-          Sign in
+          Sign Up
         </h2>
         <form>
           <div class="input_container">
             <i class="fa fa-user-tie"></i>
             <input
               type="text"
-              name="username"
-              id="username"
+              name="email"
+              id="email"
               placeholder="Enter your email..."
               required
             />
@@ -39,16 +40,26 @@
               required
             />
           </div>
-          <button type="submit" id="btn_signin">SIGN IN</button>
+          <div class="input_container">
+            <i class="fas fa-redo-alt"></i>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              placeholder="Comfirm your password..."
+              required
+            />
+          </div>
+          <button type="submit" id="btn_signup">SIGN UP</button>
           <span
-            ><a href="./signup.html" style="text-decoration: none;"
-              >Register</a
+            ><a href="./login.html" style="text-decoration: none;"
+              >Login</a
             ></span
           >
         </form>
       </div>
     </div>
-    <script type="module" src="./js/login.js"></script>
+    <script type="module" src="./js/signup.js"></script>
     <script src="./js/all.js"></script>
   </body>
 </html>
