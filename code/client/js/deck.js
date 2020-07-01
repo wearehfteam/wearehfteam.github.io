@@ -1,31 +1,30 @@
+let apiHost = "https://flashcardapiserver.herokuapp.com";
 
 async function fetchData() {
+  var res = await fetch(`${apiHost}/decks`);
+  var data = await res.json();
 
-    var res = await fetch("http://localhost:3000/decks")
-    var data = await res.json();
+  var deck = document.querySelector(".deck");
+  var card = document.querySelector(".flip-card");
 
-    var  deck = document.querySelector(".deck");
-    var  card = document.querySelector(".flip-card");
-   
+  var name = document.querySelector(".flip-card-back");
+  var image = document.querySelector(".flip-card-front");
 
-    var  name = document.querySelector(".flip-card-back");
-    var  image = document.querySelector(".flip-card-front");
-    
-    console.log(data[0]);
-    
-    data.map(dt =>{
-        // const card = document.createElement("div");
-        // card.classList.add("flip-card");
+  console.log(data[0]);
 
-        // const card_inner = document.createElement("div");
-        // carcard_inner.classList.add("flip-card-inner");
+  data.map((dt) => {
+    // const card = document.createElement("div");
+    // card.classList.add("flip-card");
 
-        // option.setAttribute("onclick", "check(this)");
-        // optionBox.appendChild(option);
-        // image.src = dt.image;
-        // name.innerHTML =  dt.name;
+    // const card_inner = document.createElement("div");
+    // carcard_inner.classList.add("flip-card-inner");
 
-        deck.innerHTML+=`
+    // option.setAttribute("onclick", "check(this)");
+    // optionBox.appendChild(option);
+    // image.src = dt.image;
+    // name.innerHTML =  dt.name;
+
+    deck.innerHTML += `
         <div class="flip-card">
             <div class="flip-card-inner">
             <a href="https://google.com/${dt.id}">
@@ -39,8 +38,7 @@ async function fetchData() {
             </a>
             </div>
         </div>`;
-    })
+  });
 }
-
 
 fetchData();
