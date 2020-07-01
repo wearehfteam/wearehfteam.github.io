@@ -11,6 +11,7 @@
       src="https://kit.fontawesome.com/c6637a4197.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="./css/fontawsome/all.css" />
     <link rel="stylesheet" href="css/questions.css" />
     <link
       rel="shortcut icon"
@@ -20,6 +21,7 @@
     <title>Flash Card</title>
   </head>
   <body>
+    <h1 class="title">PLAY!!</h1>
     <!-- all box -->
     <div class="home-box">
       <!-- result box -->
@@ -41,16 +43,17 @@
         <div class="option-box hide-option-box"></div>
 
         <div class="description">
-          <div class="correct-answer-description description-text">perfect</div>
-          <div class="wrong-answer-description description-text">
-            Try again later
+          <div class="correct-answer-description description-text">
+            <i class="fas fa-check-circle"></i>
           </div>
-        </div>
-
-        <div class="next-question">
-          <button type="button" class="next-question-btn btn show">
-            Next Question
-          </button>
+          <div class="wrong-answer-description description-text">
+            <i class="fas fa-redo"></i>
+          </div>
+          <div class="next-question">
+            <button type="button" class="next-question-btn show">
+              <i class="fas fa-arrow-circle-right"></i>
+            </button>
+          </div>
         </div>
       </div>
       <!-- over box -->
@@ -62,13 +65,21 @@
 
       <!-- menu box -->
       <div class="menu-box blur">
-        <button type="button" class="result-btn btn">result</button>
-        <button type="button" class="reset-btn btn">Reset</button>
-        <button type="button" class="shuffle-btn btn">Shuffle</button>
-        <button type="button" class="more-infor-btn btn">More info</button>
+        <button type="button" class="result-btn btn">
+          <i class="fas fa-check-double"></i>
+        </button>
+        <button type="button" class="reset-btn btn">
+          <i class="fas fa-redo-alt"></i>
+        </button>
+        <button type="button" class="shuffle-btn btn">
+          <i class="fab fa-mixer"></i>
+        </button>
+        <button type="button" class="more-infor-btn btn">
+          <i class="fas fa-info-circle"></i>
+        </button>
       </div>
     </div>
+    <script src="js/questions.js"></script>
+    <script src="./js/all.js"></script>
   </body>
-
-  <script src="js/questions.js"></script>
 </html>
