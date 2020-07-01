@@ -22,10 +22,11 @@ const WRONG_ANSWER_DESCRIPTION = document.querySelector(
   ".wrong-answer-description"
 );
 
-let category = getDeck();
+let category = sessionStorage.getItem("deckid");
 let listOfQuestions = [];
 let questionIndex = 0;
 let numberOfAnsweredQuestions = 0;
+let apiHost = "https://flashcardapiserver.herokuapp.com";
 
 let getRandAnsFromList = (listAnswers, answer, index) => {
   let answers = listAnswers.filter((ques) => ques !== answer);
@@ -38,7 +39,7 @@ let getRandAnsFromList = (listAnswers, answer, index) => {
 let fetchListOfQuestions = async (category = 1) => {
   let listOfQuestions = [];
   try {
-    let response = await fetch(`http://localhost:3000/questions/${category}`);
+    let response = await fetch(`${apiHost}/questions/${category}`);
     let oriData = await response.json();
     let listAnswers = oriData.map((ques) => ques.vietnamese);
 
@@ -123,6 +124,27 @@ let resetAnswerStatus = () => {
   });
 };
 
+let saveScore = () => {
+  let username = window.sessionStorage.getItem("username");
+  let score = listOfQuestions.reduce(
+    (acc, current) => (acc += current.status === "true" ? 1 : 0),
+    0
+  );
+  fetch(`${apiHost}/decks`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      username: username,
+      deckid: category,
+      score: `${score}/${listOfQuestions.length}`,
+    }),
+  })
+    .then((response) => response.json())
+    .then((res) => console.log(res));
+};
+
 let checkAnswering = (chosenOption) => {
   const id = chosenOption.id;
   let status = "not answer";
@@ -149,6 +171,7 @@ let checkAnswering = (chosenOption) => {
   showNextQuestionBtn();
 
   if (numberOfAnsweredQuestions == listOfQuestions.length) {
+    saveScore();
     showOuizOverBox();
   }
 };
@@ -224,7 +247,6 @@ RESULT_BTN.addEventListener("click", () => {
 
 SHOW_MORE_INFOR_BTN.addEventListener("click", () => {
   SHOW_MORE_INFOR_BOX.classList.toggle("hover");
-  console.log("hello");
 });
 
 window.onload = () => {
@@ -266,13 +288,6 @@ function randomList(arr) {
   return newArr;
 }
 
-function getDeck() {
-  var queryString = decodeURIComponent(window.location.search);
-  queryString = queryString.substring(1);
-  var queries = queryString.split("&");
-  return queries[0];
-}
-
 window.onload = () => {
   fetchListOfQuestions(category).then((data) => {
     listOfQuestions = data;
@@ -280,3 +295,7 @@ window.onload = () => {
     creatAnswersForResultBox();
   });
 };
+
+if (!window.sessionStorage.getItem("username")) {
+  window.location.href = "login.html";
+}
