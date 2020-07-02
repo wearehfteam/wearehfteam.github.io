@@ -1,70 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/c6637a4197.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="./css/fontawsome/all.css" />
-    <link rel="stylesheet" href="css/questions.css" />
-    <link
-      rel="shortcut icon"
-      href="./img/icon/favicon.ico"
-      type="image/x-icon"
-    />
-    <title>Flash Card</title>
-  </head>
-  <body>
-    <!-- <h1 class="title">PLAY!!</h1> -->
-    <!-- all box -->
-    <div class="home-box">
-      <!-- result box -->
-      <div class="result-box blur"></div>
-      <!-- card box -->
-      <div class="card-box blur">
-        <div class="flip-container">
-          <div class="flipper">
-            <div class="front question-box">
-              <div class="question-text">Questions</div>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+  background-color:#1d1d1d;
+  overflow:hidden;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;padding: 0;
+}
 
-            <div class="back infor-box">
-              <div class="infor-text"></div>
-            </div>
-          </div>
-        </div>
+svg{
+  width:100%;
+  height:100%;
+}
 
-        <div class="option-box hide-option-box"></div>
+text{
+  fill:red;
+}
 
-        <div class="description">
-          <div class="correct-answer-description description-text">
-            <i class="fas fa-check-circle"></i>
-          </div>
-          <div class="wrong-answer-description description-text">
-            <i class="fas fa-redo"></i>
-          </div>
-          <div class="next-question">
-            <button type="button" class="next-question-btn show">
-              <i class="fas fa-arrow-circle-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- over box -->
-      <!-- <div class="over-box show-over-box">
-        <div class="over-box-text">
-          CONGRATULATIONS, YOU HAVE COMPLETED !
-        </div>
-      </div> -->
-      <div class="over-box show-over-box">
-        <div >
-          
+    </style>
+</head>
+<body>
+    
   <svg class="rocketManSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"viewBox="0 0 600 600" >
 
     <defs>
@@ -233,7 +197,7 @@
         <use xlink:href="#badge" x="0" y="0" />
       </g>
     </g>
-    <!-- <g>
+    <g>
       <g>
         <g>
           <g>
@@ -280,33 +244,128 @@
         </g>
         <use xlink:href="#badge" x="-20" y="293" opacity="0.1" />
       </g>
-    </g> -->
+    </g>
   </svg>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <script>
+      
+var jetBubbles = document.getElementsByClassName('jetBubble');
+var rocketManSVG = document.querySelector('.rocketManSVG');
+var shakeGroup = document.querySelector('.shakeGroup');
+var star = document.querySelector('.star');
+var satellite = document.querySelector('.satellite');
+var astronaut = document.querySelector('.astronaut');
+var starContainer = document.querySelector('.starContainer');
+var badgeLink = document.querySelector('#badgeLink');
+
+TweenMax.to(astronaut, 0.05, {
+  y:'+=4',
+  repeat:-1, 
+  yoyo:true
+})
+var mainTimeline = new TimelineMax({repeat:-1});
+var mainSpeedLinesTimeline = new TimelineMax({repeat:-1, paused:false});
+
+mainTimeline.timeScale(6).seek(100);
+
+function createJets(){
+  TweenMax.set(jetBubbles, {
+    attr:{
+      r:'-=5'
+    }
+  })
+ //jet bubbles
+  for(var i = 0; i < jetBubbles.length; i++){    
+    var jb = jetBubbles[i];    
+    var tl = new TimelineMax({repeat:-1});
+    tl.to(jb, 1 , {
+      attr:{
+        r:'+=15'
+      },
+      ease:Linear.easeNone
+    })
+    .to(jb, 1 , {
+      attr:{
+        r:'-=15'
+      },
+      ease:Linear.easeNone
+    })
+    
+    mainTimeline.add(tl, i/4)
+  }
+  //speed lines
+	for(var i = 0; i < 7; i++){
+    var sl = document.querySelector('#speedLine' + i);
+
+    var stl = new TimelineMax({repeat:-1, repeatDelay:Math.random()});
+    stl.set(sl, {
+      drawSVG:false
+    })
+    .to(sl, 0.05, {
+      drawSVG:'0% 30%',
+      ease:Linear.easeNone
+    })
+    .to(sl, 0.2, {
+      drawSVG:'70% 100%',
+      ease:Linear.easeNone
+    })  
+    .to(sl, 0.05, {
+      drawSVG:'100% 100%',
+      ease:Linear.easeNone
+    })
+     .set(sl, {
+      drawSVG:'-1% -1%'
+    });
+
+    mainSpeedLinesTimeline.add(stl, i/23);
+}  
+  //stars
+	for(var i = 0; i < 7; i++){
+    
+    var sc = star.cloneNode(true);
+    starContainer.appendChild(sc);
+    var calc = (i+1)/2;
+   
+    TweenMax.fromTo(sc, calc, {
+      x:Math.random()*600,
+      y:-30,
+      scale:3 - calc
+    }, {
+      y:(Math.random() * 100) + 600,
+      repeat:-1,
+      repeatDelay:1,
+      ease:Linear.easeNone
+    })
+  }
+  
+  rocketManSVG.removeChild(star);
+}
 
 
+var satTimeline = new TimelineMax({repeat:-1});
+satTimeline.to(satellite, 46, {
+  rotation:360,
+  transformOrigin:'50% 50%',
+  ease:Linear.easeNone
+})
 
-        </div>
-      </div>
-      <!-- menu box -->
-      <div class="menu-box ">
-        <button type="button" class="result-btn btn">
-          <i class="fas fa-check-double"></i>
-        </button>
-        <button type="button" class="reset-btn btn">
-          <i class="fas fa-redo-alt"></i>
-        </button>
-        <button type="button" class="shuffle-btn btn">
-          <i class="fab fa-mixer"></i>
-        </button>
-        <button type="button" class="more-infor-btn btn">
-          <i class="fas fa-info-circle"></i>
-        </button>
+TweenMax.staggerTo('.pulse', 0.8, {
+  alpha:0,
+  repeat:-1,
+  ease:Power2.easeInOut,
+  yoyo:false
+}, 0.1);
 
-      </div>
-    </div>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
-    <script src="js/questions.js"></script>
-    <script src="./js/all.js"></script>
-    <script src="./js/congratulations.js"></script>
-  </body>
+TweenMax.staggerTo('.satellitePulse', 0.8, {
+  alpha:0,
+  repeat:-1,
+  ease:Power2.easeInOut,
+  yoyo:false
+}, 0.1)
+
+createJets();
+
+
+  </script>
+</body>
 </html>

@@ -43,10 +43,13 @@ body {
   font-weight: 800;
   color: #f89287;
 }
+a{
+  width: 33.33%;
+}
 .flip-card {
   cursor: pointer;
   position: relative;
-  width: calc(33.33% - 20px);
+  width: calc(100% - 20px);
   height: 25rem;
   border-radius: 2rem;
   background-color: #ffb3ab;
@@ -73,4 +76,7 @@ img {
   font-family: "Josefin Sans";
   font-weight: 800;
   color: white;
+}
+.flip-card-inner{
+  height: 100%;
 }
