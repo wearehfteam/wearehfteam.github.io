@@ -14,6 +14,7 @@ const RESULT_BTN = document.querySelector(".result-btn");
 const RESET_BTN = document.querySelector(".reset-btn");
 const SHUFFLE_BTN = document.querySelector(".shuffle-btn");
 const SHOW_MORE_INFOR_BTN = document.querySelector(".more-infor-btn");
+const HIDE_MENU_BOX = document.querySelector(".menu-box");
 
 const CORRECT_ANSWER_DESCRIPTION = document.querySelector(
   ".correct-answer-description"
@@ -173,8 +174,11 @@ let checkAnswering = (chosenOption) => {
   if (numberOfAnsweredQuestions == listOfQuestions.length) {
     saveScore();
     showOuizOverBox();
+    hideMenuBox();
   }
 };
+
+
 
 let showWrongAnswerNotification = () => {
   WRONG_ANSWER_DESCRIPTION.classList.add("show");
@@ -219,6 +223,11 @@ let showOuizOverBox = () => {
 let hideQuizOverBox = () => {
   HIDE_PLAY_BOX.classList.remove("show-card-box");
   SHOW_OVER_BOX.classList.add("show-over-box");
+};
+
+let hideMenuBox = () => {
+  HIDE_MENU_BOX.classList.add("hide-menu-box")
+  
 };
 
 NEXT_QUESTION_BTN.addEventListener("click", () => {
