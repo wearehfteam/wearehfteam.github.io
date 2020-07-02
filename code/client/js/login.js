@@ -3,7 +3,9 @@ const btn = document.getElementById("btn_signin");
 let apiHost = "https://flashcardapiserver.herokuapp.com";
 
 function isTrue(res) {
+  let username = document.getElementById("username").value;
   if (res.message === "Login success!") {
+    window.sessionStorage.setItem("username", username);
     window.location.href = "deck.html";
   } else {
     alert("Failure!");

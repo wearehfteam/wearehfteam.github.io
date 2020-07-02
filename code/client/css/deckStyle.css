@@ -44,6 +44,7 @@ body {
   color: #f89287;
 }
 .flip-card {
+  cursor: pointer;
   position: relative;
   width: calc(33.33% - 20px);
   height: 25rem;
