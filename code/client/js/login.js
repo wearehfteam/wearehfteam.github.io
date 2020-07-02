@@ -2,6 +2,7 @@ const btn = document.getElementById("btn_signin");
 
 let apiHost = "https://flashcardapiserver.herokuapp.com";
 
+
 function isTrue(res) {
   let username = document.getElementById("username").value;
   if (res.message === "Login success!") {
@@ -11,6 +12,7 @@ function isTrue(res) {
     alert("Failure!");
   }
 }
+
 btn.addEventListener("click", async function (event) {
   event.preventDefault();
   var username = document.getElementById("username").value;

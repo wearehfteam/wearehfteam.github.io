@@ -22,6 +22,7 @@ async function fetchData() {
              <div class="text">  <p>${dt.id}.${dt.name}</p></div>
             </div>`;
     deck.appendChild(flipCard);
+
   });
 }
 if (!window.sessionStorage.getItem("username")) {
