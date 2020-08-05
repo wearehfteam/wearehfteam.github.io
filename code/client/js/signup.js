@@ -1,3 +1,5 @@
+import apiHost from "./apiHost.js";
+
 const btnSignup = document.getElementById("btn_signup");
 function isMatchPassword(password, confirmPassword) {
   return (
@@ -17,7 +19,7 @@ btnSignup.addEventListener("click", async function (event) {
   var password = document.getElementById("password").value;
   var confirmPassword = document.getElementById("confirmPassword").value;
   if (!isMatchPassword(password, confirmPassword)) {
-    fetch("http://localhost:3000/signup", {
+    fetch(`${apiHost}/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json;charset=utf-8" },
 

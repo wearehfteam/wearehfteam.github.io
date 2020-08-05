@@ -1,11 +1,11 @@
-let apiHost = "https://flashcardapiserver.herokuapp.com";
+import apiHost from "./apiHost.js";
 
 async function fetchData() {
   var res = await fetch(`${apiHost}/decks`);
   var data = await res.json();
 
   var deck = document.querySelector(".deck");
-  
+
   data.map((dt) => {
     let flipCard = document.createElement("div");
     flipCard.classList.add("flip-card");
@@ -22,7 +22,6 @@ async function fetchData() {
              <div class="text">  <p>${dt.id}.${dt.name}</p></div>
             </div>`;
     deck.appendChild(flipCard);
-
   });
 }
 if (!window.sessionStorage.getItem("username")) {

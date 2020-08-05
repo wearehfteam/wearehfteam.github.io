@@ -1,3 +1,5 @@
+import apiHost from "./apiHost.js";
+
 const QUESTION_TEXT = document.querySelector(".question-text");
 const MORE_INFOR_TEXT = document.querySelector(".infor-text");
 
@@ -9,7 +11,6 @@ const HIDE_PLAY_BOX = document.querySelector(".card-box");
 const SHOW_OVER_BOX = document.querySelector(".over-box");
 
 const NEXT_QUESTION_BTN = document.querySelector(".next-question-btn");
-
 const RESULT_BTN = document.querySelector(".result-btn");
 const RESET_BTN = document.querySelector(".reset-btn");
 const SHUFFLE_BTN = document.querySelector(".shuffle-btn");
@@ -27,7 +28,6 @@ let category = sessionStorage.getItem("deckid");
 let listOfQuestions = [];
 let questionIndex = 0;
 let numberOfAnsweredQuestions = 0;
-let apiHost = "https://flashcardapiserver.herokuapp.com";
 
 let getRandAnsFromList = (listAnswers, answer, index) => {
   let answers = listAnswers.filter((ques) => ques !== answer);
@@ -70,6 +70,40 @@ let createNewQuestion = () => {
   createFourOptions();
 };
 
+const checkAnswering = (chosenOption) => {
+  console.log(chosenOption);
+
+  const id = chosenOption.id;
+  let status = "not answer";
+
+  if (id == listOfQuestions[questionIndex].indexAns) {
+    chosenOption.classList.add("correct");
+    showCorrectAnswerNotification();
+
+    status = "true";
+  } else {
+    chosenOption.classList.add("wrong");
+    showWrongAnswerNotification();
+
+    status = "false";
+
+    // show true answer for user after he/she chose
+    const indexAns = listOfQuestions[questionIndex].indexAns;
+    OPTIONS_BOX.children[indexAns].classList.add("show-correct");
+  }
+
+  saveQuestionStatus(status);
+  disableAnsweringQuestion();
+
+  showNextQuestionBtn();
+
+  if (numberOfAnsweredQuestions == listOfQuestions.length) {
+    saveScore();
+    showOuizOverBox();
+    hideMenuBox();
+  }
+};
+
 let createFourOptions = () => {
   OPTIONS_BOX.innerHTML = "";
   for (let i = 0; i < listOfQuestions[questionIndex].options.length; i++) {
@@ -77,7 +111,8 @@ let createFourOptions = () => {
     option.innerHTML = listOfQuestions[questionIndex].options[i];
     option.classList.add("option");
     option.id = i;
-    option.setAttribute("onclick", "checkAnswering(this)");
+    // option.setAttribute("onclick", "checkAnswering(this)");
+    option.addEventListener("click", () => checkAnswering(option));
     OPTIONS_BOX.appendChild(option);
   }
 };
@@ -146,40 +181,6 @@ let saveScore = () => {
     .then((res) => console.log(res));
 };
 
-let checkAnswering = (chosenOption) => {
-  const id = chosenOption.id;
-  let status = "not answer";
-
-  if (id == listOfQuestions[questionIndex].indexAns) {
-    chosenOption.classList.add("correct");
-    showCorrectAnswerNotification();
-
-    status = "true";
-  } else {
-    chosenOption.classList.add("wrong");
-    showWrongAnswerNotification();
-
-    status = "false";
-
-    // show true answer for user after he/she chose
-    const indexAns = listOfQuestions[questionIndex].indexAns;
-    OPTIONS_BOX.children[indexAns].classList.add("show-correct");
-  }
-
-  saveQuestionStatus(status);
-  disableAnsweringQuestion();
-
-  showNextQuestionBtn();
-
-  if (numberOfAnsweredQuestions == listOfQuestions.length) {
-    saveScore();
-    showOuizOverBox();
-    hideMenuBox();
-  }
-};
-
-
-
 let showWrongAnswerNotification = () => {
   WRONG_ANSWER_DESCRIPTION.classList.add("show");
 };
@@ -226,8 +227,7 @@ let hideQuizOverBox = () => {
 };
 
 let hideMenuBox = () => {
-  HIDE_MENU_BOX.classList.add("hide-menu-box")
-  
+  HIDE_MENU_BOX.classList.add("hide-menu-box");
 };
 
 NEXT_QUESTION_BTN.addEventListener("click", () => {
