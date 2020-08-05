@@ -289,7 +289,7 @@ function shuffle() {
 function randomList(arr) {
   let newArr = [];
   while (arr.length) {
-    indx = parseInt((Math.random() * 1000) % arr.length);
+    let indx = parseInt((Math.random() * 1000) % arr.length);
     newArr.push(arr[indx]);
     arr.splice(indx, 1);
   }
