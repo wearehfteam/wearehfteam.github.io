@@ -98,7 +98,7 @@ const checkAnswering = (chosenOption) => {
   showNextQuestionBtn();
 
   if (numberOfAnsweredQuestions == listOfQuestions.length) {
-    saveScore();
+    // saveScore();
     showOuizOverBox();
     hideMenuBox();
   }
@@ -160,26 +160,26 @@ let resetAnswerStatus = () => {
   });
 };
 
-let saveScore = () => {
-  let username = window.sessionStorage.getItem("username");
-  let score = listOfQuestions.reduce(
-    (acc, current) => (acc += current.status === "true" ? 1 : 0),
-    0
-  );
-  fetch(`${apiHost}/decks`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({
-      username: username,
-      deckid: category,
-      score: `${score}/${listOfQuestions.length}`,
-    }),
-  })
-    .then((response) => response.json())
-    .then((res) => console.log(res));
-};
+// let saveScore = () => {
+//   let username = window.sessionStorage.getItem("username");
+//   let score = listOfQuestions.reduce(
+//     (acc, current) => (acc += current.status === "true" ? 1 : 0),
+//     0
+//   );
+//   fetch(`${apiHost}/decks`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json;charset=utf-8",
+//     },
+//     body: JSON.stringify({
+//       username: username,
+//       deckid: category,
+//       score: `${score}/${listOfQuestions.length}`,
+//     }),
+//   })
+//     .then((response) => response.json())
+//     .then((res) => console.log(res));
+// };
 
 let showWrongAnswerNotification = () => {
   WRONG_ANSWER_DESCRIPTION.classList.add("show");
