@@ -16,14 +16,15 @@ body {
   font-family: "Raleway";
 }
 .section {
+  position: relative;
   max-width: 192rem;
   width: 80%;
   height: 90%;
   background: url("../img/signup.png") no-repeat;
-  background-color: white;
   border-radius: 20px;
   background-size: cover;
   background-position: right;
+  animation: Float 1.5s;
 }
 
 #error {
@@ -104,4 +105,14 @@ body {
   color: #1b1d6b;
   border: 1px solid #1b1d6b;
   background-color: transparent;
+}
+@keyframes Float {
+  0% {
+    bottom: -200px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0px;
+    opacity: 1;
+  }
 }

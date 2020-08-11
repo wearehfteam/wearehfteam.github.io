@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -6,32 +7,40 @@
 
 html {
   color: #555;
-  font-family: 'Roboto', 'Arial', sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   font-weight: 500;
-  font-size: 62.5%;
+  font-size: 62.5%; 
   text-rendering: optimizeLegibility;
+  /* text-transform: unset; */
 }
 
 body {
-  background: url(../img/backgroundQT.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: linear-gradient(0deg, rgb(253, 142, 157), rgb(248, 156, 139));
+  height: 100vh;
+  overflow: hidden;
+}
+.title {
+  position: absolute;
+  bottom: 0;
+  font-family: "Raleway";
+  z-index: 3;
+  font-size: 20rem;
+  text-shadow: 5px 5px 0px rgba(255, 255, 255, 0.5);
+  color: rgb(255, 87, 110);
 }
 /* Contains result box, card box and menu box  */
 .home-box {
-  max-width: 1200px;
-  height: 650px;
-  /* background-color:red; */
-  margin: 145px auto;
-
   display: flex;
   justify-content: center;
+  max-width: 140rem;
+  width: 100%;
+  height: 70rem;
+  margin: 7rem auto;
 }
 
 .blur {
-  background-color: rgb(255, 255, 255);
-  background-color: rgba(255, 239, 239, 0.4);
+  background: linear-gradient(-180deg, rgb(255, 87, 110), rgb(255, 128, 105));
+  box-shadow: 10px 8px 0px rgba(134, 134, 134, 0.5);
 }
 
 /* result box */
@@ -44,15 +53,12 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  border-bottom: 1px solid black;
-
+  border-bottom: 1px solid white;
+  color: white;
   width: 100%;
-  height: 10%;
-
   margin: 3px;
-
   font-size: 30px;
+  
 }
 .result-box .answer .fa-check {
   color: green;
@@ -65,19 +71,26 @@ body {
 }
 
 .show-result-box {
+  width: 25%;
   display: flex;
   flex-direction: column;
-  padding: 50px 40px;
+  padding: 28px 28px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
   /* border-radius: 20px; */
   animation: fadeInRight 1s ease;
 }
 
 /* card box contains question box, infor box, option box, decripton box and next-question button */
 .card-box {
-  width: 600px;
-  font-weight: bold;
-  padding: 50px 10px;
+  width: 100%;
+  padding: 5rem 2rem;
   animation: fadeInRight 1s ease;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+
 }
 .show-card-box {
   display: none;
@@ -87,9 +100,9 @@ body {
   width: 600px;
   font-weight: bold;
   padding: 100px 10px;
-  background-image: url(../img/hd6.gif);
+  /* background-image: url(../img/hd6.gif);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   animation: fadeInRight 1s ease;
   text-align: center;
   font-size: 40px;
@@ -99,132 +112,134 @@ body {
 }
 
 .card-box .question-box {
-  background-image: url(../img/backgroundQT.jpg);
-  background-attachment: fixed;
-  background-color: #ffffff;
-  border: 5px solid black;
+  position: relative;
+  width: 100%;
   border-radius: 10px;
-  font-size: 40px;
+  border: 10px solid black;
+  /* box-shadow: 2px 3px 1px 2px rgb(194, 194, 194),-2px -3px 1px 2px rgba(112, 208, 252, 0.925); */
+  background-color: rgb(255, 87, 110);
+  text-transform: capitalize;
+  font-family: "Raleway";
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+
 }
 .card-box .infor-box {
-  background-image: url(../img/backgroundQT.jpg);
-  border: 1px solid black;
   border-radius: 10px;
-  font-size: 30px;
   text-align: center;
-  border: 2px solid black;
+  border:10px solid black;
+  /* background: linear-gradient(-180deg, rgb(255, 87, 110), rgb(255, 128, 105));
+   */
+   /* background-color: rgba(255, 255, 255, 0.932); */
+   background-color:transparent;
+   background-image: 
+     repeating-linear-gradient(
+       45deg,
+       rgba(0,0,0,0.8),
+       rgba(0,0,0,0.8) 100px,
+       transparent 0px,
+       transparent 200px
+     ),
+     repeating-linear-gradient(
+       -45deg,
+       rgba(0,0,0,0.5),
+       rgba(0,0,0,0.5) 100px,
+       transparent 0px,
+       transparent 200px
+     );
 }
 
 .card-box .infor-box .infor-text {
   position: relative;
-
   width: 100%;
   height: 100%;
-
-  padding: 20px;
-
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 4rem;
+  color: white  ;
 
-  font-family: 'Roboto', sans-serif;
-  font-size: 25px;
-
-  color: black;
-
-  text-transform: uppercase;
 }
 
 .card-box .question-box .question-text {
-  position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
   height: 100%;
-
-  font-family: 'Roboto', sans-serif;
-  font-size: 80px;
-
-  color: black;
+  font-size: 10rem;
+  font-weight: 800;
   text-align: center;
-  text-transform: uppercase;
 }
 .card-box .option-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
+  border-bottom: 2px solid white;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  
 }
 
 .card-box .option-box .option {
-  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
   flex-basis: calc(50% - 20px);
   max-width: calc(50% - 20px);
+  height: 7rem;
   margin-top: 30px;
   padding: 5px 5px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 800;
-  border: 1px solid black;
-  border-radius: 10px;
-  position: relative;
-}
-.card-box .option-box .option:hover {
-  animation: pulse 1s linear;
-}
-.card-box .option-box .option.show-correct {
-  background-color: green;
-  border-color: black;
-  animation: pulse 1s linear;
-}
-.card-box .option-box .option.correct {
-  background-color: green;
-  border-color: black;
-  animation: pulse 1s linear;
+  border-radius: 50px;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+.card-box .option-box .option.show-correct {
+  background-color: rgb(73, 212, 134);
+  /* border-color: black; */
+  animation: pulse 1s linear;
+  color: white;
 }
+.card-box .option-box .option.correct {
+  background-color: rgb(61, 180, 112);
+  animation: pulse 1s linear;
+  color: white;
+}
+
 .card-box .option-box .option.correct::before {
-  content: '';
+  content: "";
   position: absolute;
-  height: 20px;
-  width: 20px;
-  right: 5px;
-  top: 5px;
-  background-image: url('../img/correct.png');
-  background-size: 15px;
+  height: 3rem;
+  width: 3rem;
+  right: 1.5rem;
+  top: 25%;
+  background-image: url("../img/correct.png");
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   animation: fadeInRight 0.5s linear forwards;
 }
 .card-box .option-box .option.wrong {
-  background-color: red;
-  border-color: black;
+  background-color: rgb(255, 37, 37);
   animation: shake 1s linear;
 }
 .card-box .option-box .option.wrong::before {
-  content: '';
+  content: "";
   position: absolute;
-  height: 20px;
-  width: 20px;
-  right: 5px;
-  top: 5px;
-  background-image: url('../img/wrong.png');
-  background-size: 15px;
+  height: 3rem;
+  width: 3rem;
+  right: 1.5rem;
+  top: 25%;
+  background-image: url("../img/wrong.png");
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   animation: fadeInRight 0.5s linear forwards;
@@ -263,47 +278,40 @@ body {
 }
 
 .card-box .wrong-answer-description {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-top: 30px;
-  padding: 15px;
   display: none;
 }
 .card-box .correct-answer-description {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-top: 30px;
-  padding: 15px;
   display: none;
 }
 .card-box .correct-answer-description.show {
-  width: 400px;
   display: block;
   animation: fadeInRight 1s ease;
 }
 .card-box .wrong-answer-description.show {
   display: block;
   animation: fadeInRight 1s ease;
-  width: 400px;
-}
-
-.card-box .description-text {
-  padding: 10px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  color: black;
-  position: relative;
-  text-transform: uppercase;
+  /* width: 400px; */
 }
 .card-box .description {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   padding: 0px 95px;
+  font-size: 7rem;
+}
+.card-box .description-text {
+  position: relative;
+  visibility: hidden;
 }
 
-.card-box .next-question {
-  text-align: center;
+.next-question-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 7rem;
+  animation: fadeInRight 1s ease;
+  margin-left: -7rem;
+  color: white;
+  cursor: pointer;
 }
 
 /* menu box */
@@ -311,42 +319,43 @@ body {
 .menu-box {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  padding: 50px 50px;
+}
+.hide-menu-box{
+    display: none;
 }
 
-.next-question .next-question-btn {
-  margin-top: 50px;
-  animation: fadeInRight 1s ease;
-}
 .next-question .next-question-btn.show {
   display: none;
 }
+.over-text{
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway";
+  color: white  ;
 
+}
 .btn {
-  height: 32px;
-  padding: 15 15px;
-  font-size: 20px;
+  width: 90%;
+  height: 10%;
+  font-size: 4rem;
+  padding: 1rem 2rem;
   color: white;
   cursor: pointer;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-  border: 1px solid black;
+  border: none;
+  background-color: transparent;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
   text-transform: uppercase;
-}
-
-.btn:hover {
-  box-shadow: 1px 1px gray, 2px 2px black, 3px 3px gray;
-  transform: translateX(-3px);
+  outline: none;
 }
 
 /* flip card*/
 
 .flip-container {
   perspective: 1000;
+  position: relative;
+  padding-bottom: 2.5rem;
 }
 
 .flip-container.hover .flipper {
@@ -354,19 +363,18 @@ body {
 }
 
 /* Kích thước các mặt */
-.flip-container,
 .front,
 .back {
-  width: 590px;
-  height: 280px;
+  /* width: 590px; */
+  height: 28rem;
+  width: 100%;
+  background-color: #ffb3ab;
 }
 
 /* flip speed  */
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
-
-  position: relative;
 }
 
 /*Ẩn các mặt sau (back face) khi hoán chuyển các mặt */
@@ -389,3 +397,35 @@ body {
 .back {
   transform: rotateY(180deg);
 }
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Congratulations */
+body{
+    background-color:#1d1d1d;
+    overflow:hidden;
+  }
+  body, html {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;padding: 0;
+  }
+  
+  svg{
+    width:100%;
+    height:100%;
+  }
+  
+  text{
+    fill:red;
+  }
+  

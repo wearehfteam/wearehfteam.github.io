@@ -16,6 +16,7 @@ body {
   font-family: "Raleway";
 }
 .section {
+  position: relative;
   max-width: 192rem;
   width: 80%;
   height: 90%;
@@ -24,6 +25,7 @@ body {
   border-radius: 20px;
   background-size: cover;
   background-position: right;
+  animation: Float 1.5s;
 }
 
 #error {
@@ -102,4 +104,12 @@ body {
 #btn_signin:hover {
   border: 1px solid #f89287;
   background-color: transparent;
+}
+@keyframes Float {
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: 0px;
+  }
 }

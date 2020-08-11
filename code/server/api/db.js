@@ -1,12 +1,12 @@
-'use strict';
-const mysql = require('mysql');
+"use strict";
+const mysql = require("mysql");
 
 const db = mysql.createConnection({
-  host: 'mysql',
+  host: "db4free.net",
   port: 3306,
-  user: 'flashcard',
-  password: '123456',
-  database: 'flash_card'
+  user: "hfteam",
+  password: "hellohfteam",
+  database: "flash_card",
 });
 
 module.exports = db;

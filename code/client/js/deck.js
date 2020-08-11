@@ -1,37 +1,30 @@
+import apiHost from "./apiHost.js";
 
 async function fetchData() {
+  var res = await fetch(`${apiHost}/decks`);
+  var data = await res.json();
 
-    var res = await fetch("http://localhost:3000/decks")
-    var data = await res.json();
+  var deck = document.querySelector(".deck");
 
-    var  deck = document.querySelector(".deck");
-    var  card = document.querySelector(".flip-card");
-   
+  data.map((dt) => {
+    let flipCard = document.createElement("div");
+    flipCard.classList.add("flip-card");
 
-    var  name = document.querySelector(".flip-card-back");
-    var  image = document.querySelector(".flip-card-front");
-    
-    console.log(data[0]);
-    
-    data.map(dt =>{
-    
+    flipCard.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.sessionStorage.setItem("deckid", dt.id);
+      window.location.href = `questions.html`;
+    });
 
-        deck.innerHTML+=`
-        <div class="flip-card">
+    flipCard.innerHTML += `
             <div class="flip-card-inner">
-            <a href="questions.html?${dt.id}">
-                <div class="flip-card-front">
-                    <img lass="flip-card-front" src="${dt.image}" alt="Avatar"
-                        style="width:300px;height:300px;border-radius: 50%;">
-                </div>
-                <div class="flip-card-back">
-                    <h1 id = "name" style="margin-top: 40%">${dt.name}</h1>
-                </div>
-            </a>
-            </div>
-        </div>`;
-    })
+              <img src="${dt.image}" alt="Avatar">
+             <div class="text">  <p>${dt.id}.${dt.name}</p></div>
+            </div>`;
+    deck.appendChild(flipCard);
+  });
 }
-
-
+if (!window.sessionStorage.getItem("username")) {
+  window.location.href = "login.html";
+}
 fetchData();
