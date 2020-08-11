@@ -8,6 +8,7 @@
 html {
   font-size: 62.5%;
   cursor: pointer;
+  overflow: hidden;
 }
 body {
   background: url("../img/background.jpg") no-repeat;
@@ -15,26 +16,28 @@ body {
 }
 .card {
   position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
 }
 .logo {
+  position: relative;
   background: url("../img/logo.png") no-repeat;
-  width: 80%;
+  width: 48%;
   height: 80rem;
-  background-size: 55%;
-  margin-top: 10rem;
+  background-size: 98%;
+  margin-top: 13rem;
   margin-left: 5rem;
 }
 .content {
-  position: absolute;
-  right: 15rem;
-  top: 20rem;
+  position: relative;
+  left: 1rem;
+  top: 30rem;
 }
 .content h1 {
   color: #ef2f62;
   font-family: "Raleway";
-  font-size: 15rem;
+  font-size: 13rem;
   font-weight: 800;
   -webkit-text-stroke: 1px white;
 }
@@ -44,7 +47,7 @@ body {
 }
 .content .btn-play {
   background-color: white;
-  z-index: 2;
+  z-index: 4;
   width: 15rem;
   border-radius: 3rem;
   border: none;
@@ -61,13 +64,22 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
-.content p {
+span {
   position: relative;
-  bottom: 0;
-  left: 5rem;
   z-index: 1;
+  right: 0rem;
+  bottom: 0;
   font-size: 40rem;
   font-weight: 700;
   color: white;
   opacity: 0.3;
+}
+@media only screen and (max-width: 1600px) {
+  .content {
+    top: 20rem;
+  }
+  span{
+    bottom: 0rem;
+    font-size: 35rem;
+  }
 }

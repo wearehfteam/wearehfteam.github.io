@@ -39,29 +39,7 @@ body {
   font-size: 3.5rem;
   color: #1b1d6b;
 }
-.social_btn {
-  margin-top: 2rem;
-  align-items: center;
-  display: flex;
-  padding: 1rem;
-  justify-content: center;
-}
-.social_btn > svg {
-  padding: 0.5rem;
-  font-size: 4.5rem;
-  color: white;
-}
-.social_btn > a {
-  margin-left: 2rem;
-  color: white;
-  border: 1px solid gray;
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .input_container {
   position: relative;
   width: 35rem;
@@ -114,5 +92,14 @@ body {
   100% {
     bottom: 0px;
     opacity: 1;
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .form {
+    float: right;
+    margin: 5.5rem 4rem;
+  }
+  .input_container {
+    width: 30rem;
   }
 }

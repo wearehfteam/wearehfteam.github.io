@@ -16,6 +16,7 @@ body {
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
+  overflow: hidden;
 }
 .title {
   font-size: 10rem;
@@ -79,4 +80,19 @@ img {
 }
 .flip-card-inner{
   height: 100%;
+}
+.user{
+  position: absolute;
+  top: 3rem;
+  right: 8rem;
+}
+.username{
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+.logout{
+  font-size: 3rem;
+  color: white;
 }

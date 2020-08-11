@@ -1,5 +1,5 @@
 import apiHost from "./apiHost.js";
-
+var username = document.querySelector(".username");
 async function fetchData() {
   var res = await fetch(`${apiHost}/decks`);
   var data = await res.json();
@@ -24,7 +24,12 @@ async function fetchData() {
     deck.appendChild(flipCard);
   });
 }
+
 if (!window.sessionStorage.getItem("username")) {
   window.location.href = "login.html";
 }
+else{
+  username.innerHTML = window.sessionStorage.getItem("username")
+}
+
 fetchData();
